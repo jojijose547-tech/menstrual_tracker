@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+<style>
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #f1f2f6;
+}
+header {
+    background: #ff6b81;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+.container {
+    padding: 20px;
+}
+.card {
+    background: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+button {
+    padding: 10px;
+    border: none;
+    background: #ff6b81;
+    color: white;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h2>Menstrual Tracker Dashboard</h2>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h3>📅 Next Period</h3>
+        <p id="nextPeriod">Loading...</p>
+    </div>
+
+    <div class="card">
+        <h3>🌼 Ovulation Date</h3>
+        <p id="ovulation">Loading...</p>
+    </div>
+
+    <div class="card">
+        <h3>➕ Add Cycle Data</h3>
+        <form action="/cycle" method="POST">
+            <input type="date" name="startDate" required>
+            <input type="date" name="endDate" required>
+
+            <select name="flowLevel">
+                <option>Light</option>
+                <option>Medium</option>
+                <option>Heavy</option>
+            </select>
+
+            <input type="text" name="mood" placeholder="Mood">
+            <input type="text" name="notes" placeholder="Notes">
+
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h3>📊 Health Report</h3>
+        <p id="report">Average cycle: -- days</p>
+    </div>
+
+</div>
+
+</body>
+</html>
