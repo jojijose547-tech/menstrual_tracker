@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CycleCare Dashboard</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #f4f6f9;
+}
+
+/* Navbar */
+nav {
+    background: #ff6b81;
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+}
+
+nav div {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Sections */
+.section {
+    display: none;
+    padding: 20px;
+}
+
+.active {
+    display: block;
+}
+
+/* Cards */
+.card {
+    background: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+input, select, button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 250px;
+}
+
+button {
+    background: #ff6b81;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div onclick="showSection('cycle')">Cycle Entry</div>
+    <div onclick="showSection('prediction')">Prediction</div>
+    <div onclick="showSection('reminder')">Reminders</div>
+    <div onclick="showSection('report')">Reports</div>
+    <div onclick="showSection('settings')">Settings</div>
+</nav>
+
+<!-- ================= SECTIONS ================= -->
+
+<!-- 1. Cycle Data Entry -->
+<div id="cycle" class="section active">
+    <div class="card">
+        <h2>Menstrual Data Entry</h2>
+        <input type="date" id="startDate">
+        <input type="date" id="endDate">
+
+        <select id="flow">
+            <option>Light</option>
+            <option>Medium</option>
+            <option>Heavy</option>
+        </select>
+
+        <input type="text" id="mood" placeholder="Mood">
+        <input type="text" id="notes" placeholder="Notes">
+
+        <button onclick="saveCycle()">Save</button>
+    </div>
+</div>
+
+<!-- 2. Prediction -->
+<div id="prediction" class="section">
+    <div class="card">
+        <h2>Cycle Prediction</h2>
+        <input type="date" id="lastPeriod">
+        <input type="number" id="cycleLength" placeholder="Cycle Length">
+
+        <button onclick="predict()">Predict</button>
+
+        <p id="predictionResult"></p>
+    </div>
+</div>
+
+<!-- 3. Reminder -->
+<div id="reminder" class="section">
+    <div class="card">
+        <h2>Reminders</h2>
+        <select id="reminderType">
+            <option>Period</option>
+            <option>Ovulation</option>
+        </select>
+
+        <input type="datetime-local" id="reminderDate">
+
+        <button onclick="setReminder()">Set Reminder</button>
+    </div>
+</div>
+
+<!-- 4. Reports -->
+<div id="report" class="section">
+    <div class="card">
+        <h2>Health Insights</h2>
+        <button onclick="getReport()">Generate Report</button>
+        <p id="reportResult"></p>
+    </div>
+</div>
+
+<!-- 5. Settings -->
+<div id="settings" class="section">
+    <div class="card">
+        <h2>Settings & Profile</h2>
+
+        <button onclick="logout()">Logout</button>
+    </div>
+</div>
+
+<!-- ================= SCRIPT ================= -->
+
+<script>
+// NAVIGATION
+function showSection(id) {
+    document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('active');
+    });
+    document.getElementById(id).classList.add('active');
+}
+
+// USER ID
+const userId = localStorage.getItem("userId");
+
+// ================= API FUNCTIONS =================
+
+// Save Cycle
+async function saveCycle() {
+    await fetch('/api/cycle', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            userId,
+            startDate: startDate.value,
+            endDate: endDate.value,
+            flow: flow.value,
+            mood: mood.value,
+            notes: notes.value
+        })
+    });
+
+    alert("Cycle saved ✅");
+}
+
+// Prediction
+async function predict() {
+    const res = await fetch('/api/predict', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            userId,
+            lastPeriodDate: lastPeriod.value,
+            cycleLength: cycleLength.value
+        })
+    });
+
+    const data = await res.json();
+
+    predictionResult.innerText =
+        "Next Period: " + data.nextPeriod +
+        " | Ovulation: " + data.ovulation;
+}
+
+// Reminder
+async function setReminder() {
+    await fetch('/api/reminder', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            userId,
+            type: reminderType.value,
+            date: reminderDate.value
+        })
+    });
+
+    alert("Reminder set 🔔");
+}
+
+// Report
+async function getReport() {
+    const res = await fetch('/api/report/' + userId);
+    const data = await res.json();
+
+    reportResult.innerText =
+        "Avg Cycle: " + data.averageCycleLength +
+        " | Status: " + data.status;
+}
+
+// Logout
+function logout() {
+    localStorage.removeItem("userId");
+    window.location.href = "/";
+}
+</script>
+
+</body>
+</html>
