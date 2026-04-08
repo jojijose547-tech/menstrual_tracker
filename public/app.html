@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CycleCare Dashboard | Cycle Tracking & Insights</title>
+<title>CycleCare Dashboard | Smart Cycle Tracking & Insights</title>
 <style>
 * {
     margin: 0;
@@ -17,9 +17,7 @@ body {
     color: #2d2f36;
 }
 
-/* Navbar */
 .navbar {
-    background: #ff7b8c;
     background: linear-gradient(135deg, #ff7b8c, #ff9a8b);
     padding: 16px 24px;
     display: flex;
@@ -50,7 +48,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Sections */
 .section {
     display: none;
     padding: 28px 24px;
@@ -68,7 +65,6 @@ body {
     display: block;
 }
 
-/* Cards & UI */
 .card {
     background: white;
     border-radius: 28px;
@@ -76,7 +72,6 @@ body {
     margin-bottom: 24px;
     box-shadow: 0 10px 25px -8px rgba(0,0,0,0.05);
     border: 1px solid #ffe2e6;
-    transition: all 0.2s;
 }
 
 .card h2 {
@@ -106,7 +101,6 @@ body {
     font-weight: 600;
     color: #5a4a4f;
     font-size: 0.85rem;
-    letter-spacing: 0.5px;
 }
 
 input, select, textarea {
@@ -115,13 +109,6 @@ input, select, textarea {
     border: 1px solid #ffcdd2;
     background: #fffafb;
     font-size: 0.9rem;
-    transition: 0.2s;
-}
-
-input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: #ff7b8c;
-    box-shadow: 0 0 0 3px rgba(255,123,140,0.2);
 }
 
 button {
@@ -132,9 +119,7 @@ button {
     font-weight: bold;
     color: white;
     cursor: pointer;
-    font-size: 0.9rem;
     transition: 0.2s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 button:hover {
@@ -148,8 +133,28 @@ button:hover {
     color: #ff7b8c;
 }
 
-.btn-outline:hover {
+.reminder-card, .insight-card {
+    background: #fff4f5;
+    border-radius: 24px;
+    padding: 18px;
+    margin-bottom: 16px;
+}
+
+.reminder-alert {
+    border-left: 5px solid #ff6b81;
     background: #fff0f2;
+    padding: 12px 16px;
+    margin: 10px 0;
+    border-radius: 16px;
+}
+
+.badge {
+    background: #ffe2e6;
+    padding: 4px 10px;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-left: 8px;
 }
 
 .grid-2col {
@@ -158,52 +163,6 @@ button:hover {
     gap: 24px;
 }
 
-.insight-card {
-    background: #fff4f5;
-    border-radius: 24px;
-    padding: 20px;
-    flex: 1;
-    min-width: 200px;
-    text-align: center;
-}
-
-.insight-card h3 {
-    color: #b94b5e;
-    font-size: 1rem;
-}
-
-.insight-value {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: #ff6b81;
-    margin: 10px 0;
-}
-
-.badge {
-    background: #ffe2e6;
-    padding: 6px 12px;
-    border-radius: 40px;
-    font-size: 0.75rem;
-    font-weight: bold;
-}
-
-.update-group {
-    margin-top: 20px;
-    background: #fef0f2;
-    padding: 16px;
-    border-radius: 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.update-group select {
-    width: auto;
-    flex: 1;
-}
-
-/* Table for cycle history */
 .cycle-table {
     width: 100%;
     border-collapse: collapse;
@@ -217,29 +176,16 @@ button:hover {
     text-align: left;
 }
 
-.cycle-table th {
-    color: #b9475b;
-}
-
 .edit-btn, .delete-btn {
-    background: none;
-    box-shadow: none;
     padding: 4px 12px;
     font-size: 0.75rem;
     margin: 0 4px;
     display: inline-block;
 }
 
-.edit-btn {
-    background: #ffc107;
-    color: #2d2f36;
-}
+.edit-btn { background: #ffc107; color: #2d2f36; }
+.delete-btn { background: #dc3545; }
 
-.delete-btn {
-    background: #dc3545;
-}
-
-/* Dashboard summary tiles */
 .dash-tiles {
     display: flex;
     flex-wrap: wrap;
@@ -253,14 +199,7 @@ button:hover {
     min-width: 180px;
     border-radius: 28px;
     padding: 20px;
-    box-shadow: 0 5px 12px rgba(0,0,0,0.03);
     border: 1px solid #ffdfe3;
-}
-
-.tile .label {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    color: #b26b7a;
 }
 
 .tile .number {
@@ -269,71 +208,9 @@ button:hover {
     color: #ff6b81;
 }
 
-/* Enhanced prediction card styles */
-.prediction-highlight {
-    background: linear-gradient(135deg, #fff0f3, #ffe9ed);
-    border-radius: 24px;
-    padding: 20px;
-    margin-top: 20px;
-    border-left: 6px solid #ff7b8c;
-}
-
-.prediction-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
-    margin: 15px 0;
-}
-
-.prediction-item {
-    flex: 1;
-    text-align: center;
-    background: white;
-    border-radius: 20px;
-    padding: 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-}
-
-.prediction-label {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #b16272;
-    font-weight: 600;
-}
-
-.prediction-date {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: #ff6b81;
-    margin-top: 8px;
-}
-
-.fertile-badge {
-    display: inline-block;
-    background: #ffd966;
-    color: #7a4b2e;
-    padding: 5px 12px;
-    border-radius: 30px;
-    font-size: 0.75rem;
-    font-weight: bold;
-    margin-top: 12px;
-}
-
-.auto-fill-btn {
-    background: #9b59b6;
-    margin-left: 10px;
-    padding: 10px 18px;
-    font-size: 0.8rem;
-}
-
 @media (max-width: 700px) {
     .navbar { gap: 10px; }
     .nav-item { padding: 6px 14px; font-size: 0.8rem;}
-    .section { padding: 16px; }
-    .card { padding: 18px; }
-    .prediction-item { min-width: 140px; }
 }
 </style>
 </head>
@@ -348,26 +225,25 @@ button:hover {
     <div class="nav-item" onclick="showSection('settings')">⚙️ Settings</div>
 </div>
 
-<!-- DASHBOARD SECTION -->
+<!-- DASHBOARD -->
 <div id="dashboard" class="section active">
     <div class="card">
         <h2>🌸 Health Dashboard</h2>
         <div class="dash-tiles">
             <div class="tile"><div class="label">Total Cycles</div><div class="number" id="totalCycles">--</div></div>
             <div class="tile"><div class="label">Avg Cycle Length</div><div class="number" id="avgCycleLen">--</div><div>days</div></div>
-            <div class="tile"><div class="label">Last Cycle</div><div class="number" id="lastCycleEnd">--</div><div>end date</div></div>
+            <div class="tile"><div class="label">Last Cycle</div><div class="number" id="lastCycleEnd">--</div></div>
             <div class="tile"><div class="label">Next Period (est.)</div><div class="number" id="nextPeriodEst">--</div></div>
         </div>
         <div class="grid-2col">
-            <div class="insight-card"><h3>💧 Most Common Flow</h3><div class="insight-value" id="commonFlow">-</div></div>
-            <div class="insight-card"><h3>😌 Frequent Mood</h3><div class="insight-value" id="commonMood">-</div></div>
-            <div class="insight-card"><h3>📋 Cycle Regularity</h3><div class="insight-value" id="regularityStatus">⚖️ Normal</div><span class="badge">based on variation</span></div>
+            <div class="insight-card"><h3>💧 Most Common Flow</h3><div class="insight-value" style="font-size:1.8rem; font-weight:800;color:#ff6b81;" id="commonFlow">-</div></div>
+            <div class="insight-card"><h3>😌 Frequent Mood</h3><div class="insight-value" style="font-size:1.8rem; font-weight:800;color:#ff6b81;" id="commonMood">-</div></div>
+            <div class="insight-card"><h3>📋 Cycle Regularity</h3><div id="regularityStatus">⚖️ Normal</div></div>
         </div>
-        <div class="insight-card" style="margin-top: 10px;"><h3>📝 Recent Health Note</h3><p id="latestNote">No notes yet</p></div>
     </div>
 </div>
 
-<!-- CYCLE ENTRY SECTION (unchanged but functional) -->
+<!-- CYCLE ENTRY -->
 <div id="cycle" class="section">
     <div class="card">
         <h2>📝 Menstrual Data Entry</h2>
@@ -375,277 +251,363 @@ button:hover {
             <div class="input-group"><label>Start Date</label><input type="date" id="startDate"></div>
             <div class="input-group"><label>End Date</label><input type="date" id="endDate"></div>
             <div class="input-group"><label>Flow Level</label><select id="flow"><option>Light</option><option>Medium</option><option>Heavy</option></select></div>
-            <div class="input-group"><label>Mood</label><input type="text" id="mood" placeholder="e.g., Happy, Tired"></div>
+            <div class="input-group"><label>Mood</label><input type="text" id="mood" placeholder="Happy, Tired, Calm"></div>
+            <div class="input-group"><label>Symptoms (comma)</label><input type="text" id="symptoms" placeholder="cramps, headache, bloating"></div>
             <div class="input-group"><label>Notes</label><input type="text" id="notes" placeholder="Extra info"></div>
         </div>
         <button onclick="saveCycle()">💾 Save New Cycle</button>
-        <div class="update-group">
-            <label style="font-weight:bold;">✏️ Edit Existing Cycle:</label>
-            <select id="editCycleSelect"><option value="">-- Select a cycle to edit --</option></select>
-            <button class="btn-outline" onclick="loadCycleForEdit()">Load Data</button>
-            <button style="background:#4c9f70;" onclick="updateCycle()">✅ Update Selected</button>
+        <div class="update-group" style="margin-top:20px; background:#fef0f2; padding:16px; border-radius:24px;">
+            <label>✏️ Edit Cycle:</label>
+            <select id="editCycleSelect"></select>
+            <button class="btn-outline" onclick="loadCycleForEdit()">Load</button>
+            <button style="background:#4c9f70;" onclick="updateCycle()">Update</button>
         </div>
-        <p style="font-size:12px; margin-top:12px; color:#a05c6b;">* Select a cycle from the dropdown → Load → Modify fields above → click Update Selected</p>
     </div>
-    <div class="card">
-        <h2>📋 Your Cycle History</h2>
-        <div id="cycleHistoryList">Loading cycles...</div>
-    </div>
+    <div class="card"><h2>📋 Cycle History</h2><div id="cycleHistoryList">Loading...</div></div>
 </div>
 
-<!-- ================= ENHANCED PREDICTION MODULE ================= -->
+<!-- PREDICTION (same enhanced) -->
 <div id="prediction" class="section">
     <div class="card">
-        <h2>🔮 Cycle Prediction Engine</h2>
-        <p style="margin-bottom: 20px; color:#6c5a60;">📐 <strong>Formula:</strong> Next Period = Last Period Start Date + Average Cycle Length &nbsp;|&nbsp; Ovulation = Next Period - 14 days</p>
-        
+        <h2>🔮 Cycle Prediction</h2>
+        <p><strong>Formula:</strong> Next Period = Last Period + Avg Cycle | Ovulation = Next Period - 14 days</p>
         <div class="form-row">
-            <div class="input-group">
-                <label>📅 Last Period Start Date</label>
-                <input type="date" id="lastPeriodDate" placeholder="Select date">
-            </div>
-            <div class="input-group">
-                <label>🔄 Average Cycle Length (days)</label>
-                <input type="number" id="cycleLengthInput" placeholder="e.g., 28" step="1">
-            </div>
-            <div class="input-group">
-                <label>⚡ Smart Suggestion</label>
-                <button type="button" class="btn-outline auto-fill-btn" onclick="autoFillFromHistory()" style="margin:0;">📊 Use my cycle history</button>
-            </div>
+            <div class="input-group"><label>Last Period Start</label><input type="date" id="lastPeriodDate"></div>
+            <div class="input-group"><label>Avg Cycle Length</label><input type="number" id="cycleLengthInput" placeholder="28"></div>
+            <button class="btn-outline" onclick="autoFillFromHistory()">📊 Use History</button>
+        </div>
+        <button onclick="calculatePrediction()">Predict Now</button>
+        <div id="predictionResultBox" style="margin-top:20px; display:none;" class="prediction-highlight"></div>
+    </div>
+</div>
+
+<!-- ================= ENHANCED REMINDERS SECTION ================= -->
+<div id="reminder" class="section">
+    <div class="card">
+        <h2>⏰ Smart Reminders & Alerts</h2>
+        <div id="liveRemindersList" style="margin-bottom: 20px;">
+            <!-- Dynamic reminders will appear here -->
+            <div class="reminder-alert">🔍 Analyzing your cycle data...</div>
         </div>
         
-        <button onclick="calculatePrediction()">✨ Predict Now</button>
-        
-        <!-- Prediction Results Area -->
-        <div id="predictionResultBox" class="prediction-highlight" style="display: none;">
-            <h3 style="color:#cc5a6e; margin-bottom: 15px;">📆 Your Cycle Forecast</h3>
-            <div class="prediction-grid">
-                <div class="prediction-item">
-                    <div class="prediction-label">🩸 NEXT PERIOD START</div>
-                    <div class="prediction-date" id="nextPeriodDisplay">--</div>
-                    <div class="fertile-badge" id="daysUntilPeriod">—</div>
-                </div>
-                <div class="prediction-item">
-                    <div class="prediction-label">🥚 OVULATION DAY</div>
-                    <div class="prediction-date" id="ovulationDisplay">--</div>
-                    <div class="fertile-badge" id="fertileHint">Fertile window insight</div>
-                </div>
-                <div class="prediction-item">
-                    <div class="prediction-label">📊 CYCLE LENGTH USED</div>
-                    <div class="prediction-date" id="cycleLengthUsed">--</div>
-                    <div class="fertile-badge">days</div>
-                </div>
-            </div>
-            <div id="fertileWindowMsg" style="text-align: center; margin-top: 12px; font-size: 0.85rem; background: #fff0f0; padding: 8px; border-radius: 40px;"></div>
+        <h3>📅 Set Custom Reminder</h3>
+        <div class="form-row">
+            <div class="input-group"><label>Reminder Type</label><select id="reminderType"><option>Period Starting Soon</option><option>Ovulation Window</option><option>Cycle Data Entry</option><option>Custom</option></select></div>
+            <div class="input-group"><label>Date & Time</label><input type="datetime-local" id="reminderDate"></div>
+            <button onclick="setReminder()">Set Reminder</button>
         </div>
+        <div id="savedRemindersList" style="margin-top: 20px;"></div>
+    </div>
+</div>
+
+<!-- ================= ENHANCED REPORTS SECTION ================= -->
+<div id="report" class="section">
+    <div class="card">
+        <h2>📊 Monthly Health Reports & Insights</h2>
+        <div class="form-row">
+            <div class="input-group"><label>Select Month</label><input type="month" id="reportMonth"></div>
+            <button onclick="generateMonthlyReport()">Generate Monthly Report</button>
+        </div>
+        <div id="monthlyReportContent" style="margin-top: 20px;"></div>
         
-        <!-- Info Box: explanation -->
-        <div style="background: #f8f0f2; border-radius: 20px; padding: 15px; margin-top: 20px;">
-            <p style="font-size: 0.85rem; color:#8e6b76;"><strong>💡 How it works:</strong> Based on your last menstrual period and average cycle length, the system calculates:</p>
-            <ul style="margin-left: 20px; margin-top: 8px; font-size: 0.8rem; color:#6c5a60;">
-                <li><strong>Next Period</strong> = Last Period Start Date + Average Cycle Length</li>
-                <li><strong>Ovulation</strong> = Next Period Date - 14 days (typical luteal phase)</li>
-                <li><strong>Fertile Window</strong> = Ovulation day - 5 days to Ovulation day + 1 day</li>
-            </ul>
-            <p style="margin-top: 8px; font-size: 0.75rem;">✅ For best accuracy, track at least 2-3 cycles to determine your personal average length.</p>
+        <h3 style="margin-top: 30px;">📈 Key Insights</h3>
+        <div id="keyInsights">
+            <div class="insight-card">📊 Average Cycle Length: <strong id="reportAvgCycle">--</strong> days</div>
+            <div class="insight-card">⚠️ Irregular Cycle Detection: <strong id="irregularStatus">--</strong></div>
+            <div class="insight-card">📝 Symptom Patterns: <strong id="symptomPatterns">--</strong></div>
+            <div class="insight-card">🌸 Most Common Flow + Mood Combo: <strong id="commonCombo">--</strong></div>
         </div>
     </div>
 </div>
 
-<!-- REMINDER / REPORT / SETTINGS sections -->
-<div id="reminder" class="section"><div class="card"><h2>⏰ Reminders</h2><select id="reminderType"><option>Period</option><option>Ovulation</option></select><input type="datetime-local" id="reminderDate"><button onclick="setReminder()">Set Reminder</button></div></div>
-<div id="report" class="section"><div class="card"><h2>📈 Health Insights</h2><button onclick="getReport()">Generate Report</button><p id="reportResult"></p></div></div>
-<div id="settings" class="section"><div class="card profile-card"><h2>👤 Profile Settings</h2><div class="profile-center"><img id="profileImage" src="https://via.placeholder.com/100" class="profile-img"><label class="upload-btn">Change Photo<input type="file" id="profilePic" accept="image/*" hidden></label></div><div class="input-group"><label>Display Name</label><input type="text" id="profileName" placeholder="Enter your name"></div><div class="input-group"><label>About You</label><textarea id="profileDetails" placeholder="Tell something about yourself"></textarea></div><button class="save-btn" onclick="saveSettings()">Save Profile</button><button class="logout-btn" onclick="logout()">Logout</button></div></div>
+<!-- SETTINGS -->
+<div id="settings" class="section">
+    <div class="card"><h2>👤 Profile</h2><img id="profileImage" src="https://via.placeholder.com/100" style="border-radius:50%;"><input type="file" id="profilePic" accept="image/*"><input type="text" id="profileName" placeholder="Name"><textarea id="profileDetails" placeholder="About"></textarea><button onclick="saveSettings()">Save</button><button onclick="logout()">Logout</button></div>
+</div>
 
 <script>
-// ---------- GLOBALS ----------
 const userId = localStorage.getItem("userId") || "demo_user_123";
 if (!localStorage.getItem("userId")) localStorage.setItem("userId", "demo_user_123");
 const API_BASE = '';
 
 async function apiCall(endpoint, method, body = null, isFormData = false) {
     const opts = { method, headers: {} };
-    if (!isFormData && body) {
-        opts.headers['Content-Type'] = 'application/json';
-        opts.body = JSON.stringify(body);
-    } else if (isFormData && body) {
-        opts.body = body;
-    }
+    if (!isFormData && body) { opts.headers['Content-Type'] = 'application/json'; opts.body = JSON.stringify(body); }
+    else if (isFormData && body) opts.body = body;
     const res = await fetch(`${API_BASE}${endpoint}`, opts);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return await res.json();
 }
 
-// ========== DASHBOARD ==========
+// ========== DASHBOARD & CYCLE HELPERS ==========
 async function refreshDashboard() {
     try {
         const cycles = await apiCall(`/api/cycles/user/${userId}`, 'GET');
-        if (!cycles || cycles.length === 0) {
-            document.getElementById("totalCycles").innerText = "0"; document.getElementById("avgCycleLen").innerText = "--";
-            document.getElementById("lastCycleEnd").innerText = "None"; document.getElementById("nextPeriodEst").innerText = "—";
-            document.getElementById("commonFlow").innerText = "—"; document.getElementById("commonMood").innerText = "—";
-            document.getElementById("regularityStatus").innerHTML = "📭 No data"; document.getElementById("latestNote").innerText = "Add your first cycle entry!";
-            return;
-        }
-        cycles.sort((a,b) => new Date(b.Start_Date) - new Date(a.Start_Date));
+        if (!cycles.length) { document.getElementById("totalCycles").innerText = "0"; document.getElementById("avgCycleLen").innerText = "--"; return; }
+        cycles.sort((a,b)=>new Date(b.Start_Date)-new Date(a.Start_Date));
         document.getElementById("totalCycles").innerText = cycles.length;
-        let cycleLengths = [];
-        for (let i = 0; i < cycles.length - 1; i++) {
-            let diffDays = (new Date(cycles[i].Start_Date) - new Date(cycles[i+1].Start_Date)) / (1000*3600*24);
-            if (diffDays > 0 && diffDays < 60) cycleLengths.push(diffDays);
+        let lengths = [];
+        for (let i=0; i<cycles.length-1; i++) {
+            let diff = (new Date(cycles[i].Start_Date) - new Date(cycles[i+1].Start_Date))/(1000*3600*24);
+            if(diff>0 && diff<60) lengths.push(diff);
         }
-        let avgLen = cycleLengths.length ? Math.round(cycleLengths.reduce((a,b)=>a+b,0)/cycleLengths.length) : null;
-        document.getElementById("avgCycleLen").innerText = avgLen ? avgLen : "--";
-        let lastCycle = cycles[0];
-        let lastEnd = lastCycle.End_Date ? new Date(lastCycle.End_Date).toLocaleDateString() : "Unknown";
+        let avg = lengths.length ? Math.round(lengths.reduce((a,b)=>a+b,0)/lengths.length) : null;
+        document.getElementById("avgCycleLen").innerText = avg || "--";
+        let lastEnd = cycles[0].End_Date ? new Date(cycles[0].End_Date).toLocaleDateString() : "Unknown";
         document.getElementById("lastCycleEnd").innerText = lastEnd;
-        let nextPrediction = "—";
-        if (avgLen && lastCycle.Start_Date) {
-            let nextStart = new Date(lastCycle.Start_Date);
-            nextStart.setDate(nextStart.getDate() + avgLen);
-            nextPrediction = nextStart.toLocaleDateString();
+        if(avg && cycles[0].Start_Date) {
+            let next = new Date(cycles[0].Start_Date);
+            next.setDate(next.getDate() + avg);
+            document.getElementById("nextPeriodEst").innerText = next.toLocaleDateString();
         }
-        document.getElementById("nextPeriodEst").innerText = nextPrediction;
-        let flowCount = {Light:0, Medium:0, Heavy:0}, moodCount = {};
-        cycles.forEach(c => { if(c.Flow_Level) flowCount[c.Flow_Level]++; if(c.Mood?.trim()) moodCount[c.Mood] = (moodCount[c.Mood]||0)+1; });
-        let topFlow = Object.keys(flowCount).reduce((a,b)=> flowCount[a] > flowCount[b] ? a : b, "Light");
-        let topMood = Object.keys(moodCount).length ? Object.keys(moodCount).reduce((a,b)=> moodCount[a] > moodCount[b] ? a : b, "Calm") : "—";
-        document.getElementById("commonFlow").innerText = topFlow; document.getElementById("commonMood").innerText = topMood;
-        let status = "🟢 Regular";
-        if (cycleLengths.length >= 3) {
-            let mean = cycleLengths.reduce((a,b)=>a+b,0)/cycleLengths.length;
-            let variance = cycleLengths.map(l => Math.pow(l-mean,2)).reduce((a,b)=>a+b,0)/cycleLengths.length;
+        let flowCount = {Light:0,Medium:0,Heavy:0}, moodCount={};
+        cycles.forEach(c=>{ if(c.Flow_Level) flowCount[c.Flow_Level]++; if(c.Mood?.trim()) moodCount[c.Mood]=(moodCount[c.Mood]||0)+1; });
+        let topFlow = Object.keys(flowCount).reduce((a,b)=>flowCount[a]>flowCount[b]?a:b,"Light");
+        let topMood = Object.keys(moodCount).length ? Object.keys(moodCount).reduce((a,b)=>moodCount[a]>moodCount[b]?a:b,"Calm"):"—";
+        document.getElementById("commonFlow").innerText = topFlow;
+        document.getElementById("commonMood").innerText = topMood;
+        let regStatus = "🟢 Regular";
+        if(lengths.length>=3){
+            let mean = lengths.reduce((a,b)=>a+b,0)/lengths.length;
+            let variance = lengths.map(l=>Math.pow(l-mean,2)).reduce((a,b)=>a+b,0)/lengths.length;
             let cv = Math.sqrt(variance)/mean;
-            if (cv > 0.2) status = "🟡 Variable"; if (cv > 0.35) status = "🔴 Irregular";
-        } else status = "⚖️ Need more data";
-        document.getElementById("regularityStatus").innerHTML = status;
-        document.getElementById("latestNote").innerText = cycles[0].Notes?.trim() || "No note recorded";
-    } catch(e) { console.warn(e); }
+            if(cv>0.2) regStatus = "🟡 Variable";
+            if(cv>0.35) regStatus = "🔴 Irregular";
+        } else regStatus = "⚖️ Add more cycles";
+        document.getElementById("regularityStatus").innerHTML = regStatus;
+    } catch(e){}
 }
-
-// ========== CYCLE CRUD ==========
 async function loadCycleHistory() {
     try {
         const cycles = await apiCall(`/api/cycles/user/${userId}`, 'GET');
-        if (!cycles.length) { document.getElementById("cycleHistoryList").innerHTML = "<p>No cycles recorded yet.</p>"; return; }
-        let html = `<table class="cycle-table"><thead><tr><th>Start</th><th>End</th><th>Flow</th><th>Mood</th><th>Notes</th><th>Actions</th></tr></thead><tbody>`;
+        if(!cycles.length){ document.getElementById("cycleHistoryList").innerHTML="<p>No cycles</p>"; return; }
+        let html = `<table class="cycle-table"><tr><th>Start</th><th>End</th><th>Flow</th><th>Mood</th><th>Symptoms</th><th>Actions</th></tr>`;
         cycles.sort((a,b)=>new Date(b.Start_Date)-new Date(a.Start_Date));
-        cycles.forEach(cycle => {
-            html += `<tr><td>${cycle.Start_Date}</td><td>${cycle.End_Date || '—'}</td><td>${cycle.Flow_Level}</td><td>${cycle.Mood || '—'}</td><td>${(cycle.Notes || '').substring(0,30)}</td>
-            <td><button class="edit-btn" onclick="prepareEditCycle(${cycle.CycleID})">Edit</button><button class="delete-btn" onclick="deleteCycle(${cycle.CycleID})">Del</button></td></tr>`;
+        cycles.forEach(c=>{
+            html += `<tr><td>${c.Start_Date}</td><td>${c.End_Date||'—'}</td><td>${c.Flow_Level}</td><td>${c.Mood||'—'}</td><td>${c.Symptoms||'—'}</td>
+            <td><button class="edit-btn" onclick="prepareEditCycle(${c.CycleID})">Edit</button><button class="delete-btn" onclick="deleteCycle(${c.CycleID})">Del</button></td></tr>`;
         });
-        html += `</tbody></table>`;
+        html += `</table>`;
         document.getElementById("cycleHistoryList").innerHTML = html;
         let select = document.getElementById("editCycleSelect");
-        select.innerHTML = '<option value="">-- Select a cycle to edit --</option>';
-        cycles.forEach(cycle => { let opt = document.createElement("option"); opt.value = cycle.CycleID; opt.textContent = `${cycle.Start_Date} → ${cycle.Flow_Level}`; select.appendChild(opt); });
-    } catch(e) { document.getElementById("cycleHistoryList").innerHTML = "Error loading cycles"; }
+        select.innerHTML = '<option value="">Select cycle</option>';
+        cycles.forEach(c=>{ let opt = document.createElement("option"); opt.value=c.CycleID; opt.textContent=`${c.Start_Date} - ${c.Flow_Level}`; select.appendChild(opt); });
+    } catch(e){ document.getElementById("cycleHistoryList").innerHTML="Error"; }
 }
-
 async function saveCycle() {
-    const startDate = document.getElementById("startDate").value;
-    if(!startDate) { alert("Please select start date"); return; }
-    const payload = { userId, startDate, endDate: document.getElementById("endDate").value, flow: document.getElementById("flow").value, mood: document.getElementById("mood").value, notes: document.getElementById("notes").value };
-    try { await apiCall('/api/cycle', 'POST', payload); alert("Cycle saved!"); clearCycleForm(); await loadCycleHistory(); await refreshDashboard(); } catch(err) { alert("Save failed"); }
+    let startDate = document.getElementById("startDate").value;
+    if(!startDate){ alert("Start date required"); return; }
+    let payload = { userId, startDate, endDate: document.getElementById("endDate").value, flow: document.getElementById("flow").value, mood: document.getElementById("mood").value, symptoms: document.getElementById("symptoms").value, notes: document.getElementById("notes").value };
+    try{ await apiCall('/api/cycle', 'POST', payload); alert("Saved!"); clearCycleForm(); await loadCycleHistory(); await refreshDashboard(); await updateRemindersAndReports(); } catch(e){ alert("Save failed"); }
 }
-async function deleteCycle(cycleId) { if(!confirm("Delete?")) return; try { await apiCall(`/api/cycle/${cycleId}`, 'DELETE'); alert("Deleted"); await loadCycleHistory(); await refreshDashboard(); } catch(e) { alert("Delete error"); } }
-let currentEditId = null;
-async function prepareEditCycle(cycleId) { try { const cycles = await apiCall(`/api/cycles/user/${userId}`, 'GET'); const cycle = cycles.find(c => c.CycleID == cycleId); if(cycle) { document.getElementById("startDate").value = cycle.Start_Date; document.getElementById("endDate").value = cycle.End_Date || ''; document.getElementById("flow").value = cycle.Flow_Level; document.getElementById("mood").value = cycle.Mood || ''; document.getElementById("notes").value = cycle.Notes || ''; currentEditId = cycle.CycleID; alert(`Loaded ${cycle.Start_Date}`); } } catch(e) { alert("Failed"); } }
-async function loadCycleForEdit() { let id = document.getElementById("editCycleSelect").value; if(!id) { alert("Pick a cycle"); return; } await prepareEditCycle(parseInt(id)); }
-async function updateCycle() { if(!currentEditId) { let val = document.getElementById("editCycleSelect").value; if(!val) { alert("Select cycle"); return; } currentEditId = parseInt(val); } const updatedData = { startDate: document.getElementById("startDate").value, endDate: document.getElementById("endDate").value, flow: document.getElementById("flow").value, mood: document.getElementById("mood").value, notes: document.getElementById("notes").value }; if(!updatedData.startDate) { alert("Start date required"); return; } try { await apiCall(`/api/cycle/${currentEditId}`, 'PUT', updatedData); alert("Updated!"); clearCycleForm(); currentEditId = null; await loadCycleHistory(); await refreshDashboard(); } catch(e) { alert("Update failed"); } }
-function clearCycleForm() { document.getElementById("startDate").value = ""; document.getElementById("endDate").value = ""; document.getElementById("mood").value = ""; document.getElementById("notes").value = ""; document.getElementById("flow").value = "Light"; }
+async function deleteCycle(id){ if(!confirm("Delete?")) return; try{ await apiCall(`/api/cycle/${id}`,'DELETE'); await loadCycleHistory(); await refreshDashboard(); await updateRemindersAndReports(); }catch(e){ alert("Error"); } }
+let currentEditId=null;
+async function prepareEditCycle(id){ try{ const cycles = await apiCall(`/api/cycles/user/${userId}`,'GET'); const cycle = cycles.find(c=>c.CycleID==id); if(cycle){ document.getElementById("startDate").value=cycle.Start_Date; document.getElementById("endDate").value=cycle.End_Date||''; document.getElementById("flow").value=cycle.Flow_Level; document.getElementById("mood").value=cycle.Mood||''; document.getElementById("symptoms").value=cycle.Symptoms||''; document.getElementById("notes").value=cycle.Notes||''; currentEditId=id; alert("Loaded for edit"); } }catch(e){} }
+async function loadCycleForEdit(){ let id=document.getElementById("editCycleSelect").value; if(!id) return; await prepareEditCycle(parseInt(id)); }
+async function updateCycle(){ if(!currentEditId){ let val=document.getElementById("editCycleSelect").value; if(!val) return; currentEditId=parseInt(val); } let data={ startDate:document.getElementById("startDate").value, endDate:document.getElementById("endDate").value, flow:document.getElementById("flow").value, mood:document.getElementById("mood").value, symptoms:document.getElementById("symptoms").value, notes:document.getElementById("notes").value }; try{ await apiCall(`/api/cycle/${currentEditId}`,'PUT',data); alert("Updated!"); clearCycleForm(); currentEditId=null; await loadCycleHistory(); await refreshDashboard(); await updateRemindersAndReports(); }catch(e){ alert("Update failed"); } }
+function clearCycleForm(){ document.getElementById("startDate").value=""; document.getElementById("endDate").value=""; document.getElementById("mood").value=""; document.getElementById("symptoms").value=""; document.getElementById("notes").value=""; document.getElementById("flow").value="Light"; }
 
-// ========== ENHANCED PREDICTION LOGIC ==========
-function calculatePrediction() {
-    let lastPeriodStr = document.getElementById("lastPeriodDate").value;
-    let cycleLength = parseInt(document.getElementById("cycleLengthInput").value);
-    
-    if (!lastPeriodStr) {
-        alert("❌ Please select your last period start date.");
-        return;
-    }
-    if (isNaN(cycleLength) || cycleLength < 18 || cycleLength > 45) {
-        alert("⚠️ Please enter a valid cycle length (typically 21–35 days). We'll use 28 days as fallback.");
-        if(isNaN(cycleLength)) cycleLength = 28;
-        else if(cycleLength < 18) cycleLength = 28;
-        else if(cycleLength > 45) cycleLength = 28;
-        document.getElementById("cycleLengthInput").value = cycleLength;
-    }
-    
-    const lastPeriod = new Date(lastPeriodStr);
-    if (isNaN(lastPeriod.getTime())) { alert("Invalid date"); return; }
-    
-    // FORMULA: Next Period = Last Period Start Date + Average Cycle Length
-    let nextPeriod = new Date(lastPeriod);
-    nextPeriod.setDate(lastPeriod.getDate() + cycleLength);
-    
-    // FORMULA: Ovulation = Next Period - 14 days
-    let ovulation = new Date(nextPeriod);
-    ovulation.setDate(nextPeriod.getDate() - 14);
-    
-    // Fertile window: ovulation -5 days to ovulation +1 day
-    let fertileStart = new Date(ovulation);
-    fertileStart.setDate(ovulation.getDate() - 5);
-    let fertileEnd = new Date(ovulation);
-    fertileEnd.setDate(ovulation.getDate() + 1);
-    
-    // Format dates
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    document.getElementById("nextPeriodDisplay").innerText = nextPeriod.toLocaleDateString(undefined, options);
-    document.getElementById("ovulationDisplay").innerText = ovulation.toLocaleDateString(undefined, options);
-    document.getElementById("cycleLengthUsed").innerText = cycleLength;
-    
-    // Days until next period
-    const today = new Date();
-    today.setHours(0,0,0,0);
-    let diffDays = Math.ceil((nextPeriod - today) / (1000 * 3600 * 24));
-    let daysMsg = diffDays >= 0 ? `⏳ in ${diffDays} days` : `🔔 overdue by ${-diffDays} days`;
-    document.getElementById("daysUntilPeriod").innerHTML = daysMsg;
-    
-    // Fertile window message
-    document.getElementById("fertileWindowMsg").innerHTML = `🌸 Fertile Window: ${fertileStart.toLocaleDateString()} – ${fertileEnd.toLocaleDateString()} (best chances for conception)`;
-    document.getElementById("predictionResultBox").style.display = "block";
-    
-    // Optionally save prediction to backend (matching original endpoint)
-    try {
-        apiCall('/api/predict', 'POST', { userId, lastPeriodDate: lastPeriodStr, cycleLength: cycleLength }).catch(e=>console.log);
-    } catch(e) {}
+// ========== SMART REMINDERS ENGINE ==========
+async function updateRemindersAndReports() {
+    await generateSmartReminders();
+    await updateReportInsights();
 }
-
-// Auto-fill from user's cycle history (computes average cycle length)
-async function autoFillFromHistory() {
+async function generateSmartReminders() {
     try {
         const cycles = await apiCall(`/api/cycles/user/${userId}`, 'GET');
-        if (!cycles || cycles.length < 2) {
-            alert("📊 Not enough cycle data! Please add at least 2 cycles to compute your average length.");
-            return;
-        }
-        cycles.sort((a,b) => new Date(b.Start_Date) - new Date(a.Start_Date));
-        let lengths = [];
-        for (let i = 0; i < cycles.length - 1; i++) {
-            let diff = (new Date(cycles[i].Start_Date) - new Date(cycles[i+1].Start_Date)) / (1000*3600*24);
-            if (diff > 0 && diff < 60) lengths.push(diff);
-        }
-        if (lengths.length === 0) { alert("Unable to compute cycle lengths from your data."); return; }
-        let avgCycle = Math.round(lengths.reduce((a,b)=>a+b,0) / lengths.length);
-        document.getElementById("cycleLengthInput").value = avgCycle;
+        if(!cycles.length){ document.getElementById("liveRemindersList").innerHTML = "<div class='reminder-alert'>📭 No cycle data yet. Add your first cycle to get smart reminders.</div>"; return; }
+        cycles.sort((a,b)=>new Date(b.Start_Date)-new Date(a.Start_Date));
+        let lastCycle = cycles[0];
+        let avgLen = await getAverageCycleLength(cycles);
+        let remindersHtml = "";
         
-        // set last period date to most recent cycle start date
-        let lastStart = cycles[0].Start_Date;
-        document.getElementById("lastPeriodDate").value = lastStart;
-        alert(`✅ Auto-filled: Last period = ${lastStart}, Avg cycle = ${avgCycle} days (based on ${lengths.length} cycles). Click "Predict Now"`);
-    } catch(e) { alert("Could not fetch cycle history"); }
+        // Period starting soon reminder
+        if(avgLen && lastCycle.Start_Date){
+            let nextPeriod = new Date(lastCycle.Start_Date);
+            nextPeriod.setDate(nextPeriod.getDate() + avgLen);
+            let today = new Date(); today.setHours(0,0,0,0);
+            let daysDiff = Math.ceil((nextPeriod - today)/(1000*3600*24));
+            if(daysDiff <= 3 && daysDiff >= 0){
+                remindersHtml += `<div class="reminder-alert">🩸 <strong>Period starting soon!</strong> Estimated in ${daysDiff} days (${nextPeriod.toLocaleDateString()}). Prepare your kit.</div>`;
+            } else if(daysDiff < 0 && daysDiff > -5){
+                remindersHtml += `<div class="reminder-alert">⚠️ Your period may be late. Check your cycle regularity.</div>`;
+            }
+            // Ovulation window reminder
+            let ovulation = new Date(nextPeriod);
+            ovulation.setDate(nextPeriod.getDate() - 14);
+            let fertileStart = new Date(ovulation); fertileStart.setDate(ovulation.getDate()-5);
+            let fertileEnd = new Date(ovulation); fertileEnd.setDate(ovulation.getDate()+1);
+            if(today >= fertileStart && today <= fertileEnd){
+                remindersHtml += `<div class="reminder-alert">🥚 <strong>Ovulation window active!</strong> Fertile days: ${fertileStart.toLocaleDateString()} – ${fertileEnd.toLocaleDateString()}</div>`;
+            } else if(Math.ceil((fertileStart - today)/(1000*3600*24)) <= 2 && (fertileStart - today) > 0){
+                remindersHtml += `<div class="reminder-alert">🔮 Ovulation window approaching in ${Math.ceil((fertileStart - today)/(1000*3600*24))} days.</div>`;
+            }
+        }
+        // Cycle data entry reminder
+        let lastEntryDate = new Date(lastCycle.Start_Date);
+        let daysSinceLast = Math.ceil((new Date() - lastEntryDate)/(1000*3600*24));
+        if(daysSinceLast > 30){
+            remindersHtml += `<div class="reminder-alert">📝 <strong>Cycle data reminder:</strong> It's been ${daysSinceLast} days since your last cycle. Consider adding a new entry.</div>`;
+        }
+        if(remindersHtml === "") remindersHtml = "<div class='reminder-alert'>✅ No immediate reminders. You're on track! 🌸</div>";
+        document.getElementById("liveRemindersList").innerHTML = remindersHtml;
+        
+        // load saved reminders
+        let savedReminders = JSON.parse(localStorage.getItem("customReminders") || "[]");
+        let savedHtml = "<h3>📌 Your Custom Reminders</h3>";
+        savedReminders.forEach((r,idx)=>{
+            savedHtml += `<div class='reminder-alert'>🔔 ${r.type} on ${new Date(r.date).toLocaleString()} <button style="background:#dc3545; padding:2px 8px; margin-left:10px;" onclick="deleteReminder(${idx})">X</button></div>`;
+        });
+        document.getElementById("savedRemindersList").innerHTML = savedHtml || "<p>No custom reminders set.</p>";
+    } catch(e){ console.warn(e); }
+}
+async function getAverageCycleLength(cycles){
+    if(cycles.length<2) return null;
+    let lengths=[];
+    for(let i=0;i<cycles.length-1;i++){
+        let diff = (new Date(cycles[i].Start_Date) - new Date(cycles[i+1].Start_Date))/(1000*3600*24);
+        if(diff>0 && diff<60) lengths.push(diff);
+    }
+    return lengths.length ? Math.round(lengths.reduce((a,b)=>a+b,0)/lengths.length) : null;
+}
+function setReminder(){
+    let type = document.getElementById("reminderType").value;
+    let date = document.getElementById("reminderDate").value;
+    if(!date){ alert("Select date & time"); return; }
+    let reminders = JSON.parse(localStorage.getItem("customReminders") || "[]");
+    reminders.push({ type, date });
+    localStorage.setItem("customReminders", JSON.stringify(reminders));
+    alert("Reminder saved!");
+    generateSmartReminders();
+}
+function deleteReminder(idx){
+    let reminders = JSON.parse(localStorage.getItem("customReminders") || "[]");
+    reminders.splice(idx,1);
+    localStorage.setItem("customReminders", JSON.stringify(reminders));
+    generateSmartReminders();
 }
 
-// ========== OTHER MODULES ==========
-async function setReminder() { let type=document.getElementById("reminderType").value, date=document.getElementById("reminderDate").value; if(!date){alert("Pick datetime");return;} try{await apiCall('/api/reminder','POST',{userId,type,date}); alert("Reminder set 🔔");}catch(e){alert("Reminder mock");} }
-async function getReport() { try{ const data=await apiCall(`/api/report/${userId}`,'GET'); document.getElementById("reportResult").innerHTML=`Avg Cycle: ${data.averageCycleLength} days | Status: ${data.status}`; } catch(e){ document.getElementById("reportResult").innerHTML="Generating insights..."; } }
-async function saveSettings() { const formData=new FormData(); formData.append("userId",userId); formData.append("name",document.getElementById("profileName").value); formData.append("details",document.getElementById("profileDetails").value); const fileInput=document.getElementById("profilePic"); if(fileInput.files.length) formData.append("profilePic",fileInput.files[0]); try{ await apiCall('/api/settings','POST',formData,true); alert("Profile saved!"); loadSettings(); }catch(e){ localStorage.setItem("demoName",document.getElementById("profileName").value); alert("Saved locally"); } }
-async function loadSettings() { try{ const data=await apiCall(`/api/settings/${userId}`,'GET'); if(data.Name) document.getElementById("profileName").value=data.Name; if(data.Overall_Details) document.getElementById("profileDetails").value=data.Overall_Details; if(data.Profile_Pic) document.getElementById("profileImage").src=data.Profile_Pic; } catch(e){ let saved=localStorage.getItem("demoName"); if(saved) document.getElementById("profileName").value=saved; } }
-function logout() { localStorage.removeItem("userId"); window.location.href="/"; }
-document.getElementById("profilePic")?.addEventListener("change",function(e){ if(e.target.files[0]){ const reader=new FileReader(); reader.onload=ev=>document.getElementById("profileImage").src=ev.target.result; reader.readAsDataURL(e.target.files[0]); } });
-function showSection(id) { document.querySelectorAll('.section').forEach(sec=>sec.classList.remove('active')); document.getElementById(id).classList.add('active'); if(id==='dashboard') refreshDashboard(); if(id==='cycle') loadCycleHistory(); }
-document.addEventListener("DOMContentLoaded",()=>{ if(!localStorage.getItem("userId")) localStorage.setItem("userId","demo_user_123"); showSection('dashboard'); loadSettings(); refreshDashboard(); loadCycleHistory(); });
+// ========== ENHANCED REPORTS: Monthly & Insights ==========
+async function generateMonthlyReport(){
+    let monthVal = document.getElementById("reportMonth").value;
+    if(!monthVal){ alert("Select a month"); return; }
+    let [year, month] = monthVal.split("-");
+    let cycles = await apiCall(`/api/cycles/user/${userId}`, 'GET');
+    let filtered = cycles.filter(c => {
+        let d = new Date(c.Start_Date);
+        return d.getFullYear() == year && d.getMonth()+1 == parseInt(month);
+    });
+    if(filtered.length === 0){
+        document.getElementById("monthlyReportContent").innerHTML = "<div class='reminder-alert'>No cycle entries for this month.</div>";
+        return;
+    }
+    let flows = filtered.map(c=>c.Flow_Level);
+    let moods = filtered.map(c=>c.Mood).filter(m=>m);
+    let symptomsList = filtered.map(c=>c.Symptoms).filter(s=>s);
+    let avgFlow = flows.reduce((a,b)=>a+ (b==='Heavy'?3: b==='Medium'?2:1),0)/flows.length;
+    let flowDesc = avgFlow>2.2?"Heavy": avgFlow>1.5?"Medium":"Light";
+    let moodFreq = {};
+    moods.forEach(m=> moodFreq[m] = (moodFreq[m]||0)+1);
+    let topMood = Object.keys(moodFreq).length ? Object.keys(moodFreq).reduce((a,b)=>moodFreq[a]>moodFreq[b]?a:b,"—") : "—";
+    let allSymptoms = symptomsList.join(",").split(",").map(s=>s.trim()).filter(s=>s);
+    let symptomCounts = {};
+    allSymptoms.forEach(s=> symptomCounts[s] = (symptomCounts[s]||0)+1);
+    let topSymptom = Object.keys(symptomCounts).length ? Object.keys(symptomCounts).reduce((a,b)=>symptomCounts[a]>symptomCounts[b]?a:b,"None") : "None";
+    
+    let reportHtml = `<div class="insight-card"><h3>📆 ${month}/${year} Report</h3>
+    <p>📊 Cycles logged: ${filtered.length}</p>
+    <p>💧 Predominant Flow: ${flowDesc}</p>
+    <p>😌 Common Mood: ${topMood}</p>
+    <p>🤧 Frequent Symptoms: ${topSymptom}</p>
+    </div>`;
+    document.getElementById("monthlyReportContent").innerHTML = reportHtml;
+    await updateReportInsights(cycles);
+}
+async function updateReportInsights(cyclesData=null){
+    let cycles = cyclesData || await apiCall(`/api/cycles/user/${userId}`, 'GET');
+    if(!cycles.length){ 
+        document.getElementById("reportAvgCycle").innerText = "--"; document.getElementById("irregularStatus").innerText = "Insufficient data";
+        document.getElementById("symptomPatterns").innerText = "—"; document.getElementById("commonCombo").innerText = "—";
+        return;
+    }
+    let avgLen = await getAverageCycleLength(cycles);
+    document.getElementById("reportAvgCycle").innerText = avgLen ? avgLen+" days" : "Need more cycles";
+    // Irregular detection
+    let lengths=[];
+    for(let i=0;i<cycles.length-1;i++){
+        let diff = (new Date(cycles[i].Start_Date)-new Date(cycles[i+1].Start_Date))/(1000*3600*24);
+        if(diff>0 && diff<60) lengths.push(diff);
+    }
+    let irregularMsg = "Regular";
+    if(lengths.length>=3){
+        let mean = lengths.reduce((a,b)=>a+b,0)/lengths.length;
+        let variance = lengths.map(l=>Math.pow(l-mean,2)).reduce((a,b)=>a+b,0)/lengths.length;
+        let cv = Math.sqrt(variance)/mean;
+        if(cv>0.25) irregularMsg = "⚠️ Irregular pattern detected (high variation)";
+        else irregularMsg = "✅ Cycle regularity is stable";
+    } else irregularMsg = "📊 Add 3+ cycles for irregularity analysis";
+    document.getElementById("irregularStatus").innerHTML = irregularMsg;
+    
+    // Symptom patterns
+    let allSymptoms = cycles.map(c=>c.Symptoms).filter(s=>s).join(",").split(",").map(s=>s.trim()).filter(s=>s);
+    let symCount={};
+    allSymptoms.forEach(s=> symCount[s]=(symCount[s]||0)+1);
+    let topSymptoms = Object.entries(symCount).sort((a,b)=>b[1]-a[1]).slice(0,2).map(e=>e[0]).join(", ");
+    document.getElementById("symptomPatterns").innerHTML = topSymptoms || "No symptoms recorded";
+    
+    // Common combo: flow + mood
+    let combos = cycles.map(c=>`${c.Flow_Level}+${c.Mood||'unknown'}`);
+    let comboCount={};
+    combos.forEach(c=> comboCount[c]=(comboCount[c]||0)+1);
+    let topCombo = Object.keys(comboCount).length ? Object.keys(comboCount).reduce((a,b)=>comboCount[a]>comboCount[b]?a:b,"—") : "—";
+    document.getElementById("commonCombo").innerHTML = topCombo;
+}
+
+async function calculatePrediction(){
+    let last = document.getElementById("lastPeriodDate").value;
+    let len = parseInt(document.getElementById("cycleLengthInput").value);
+    if(!last){ alert("Select last period"); return; }
+    if(isNaN(len) || len<18) len=28;
+    let next = new Date(last); next.setDate(next.getDate()+len);
+    let ovulation = new Date(next); ovulation.setDate(next.getDate()-14);
+    let fertileStart = new Date(ovulation); fertileStart.setDate(ovulation.getDate()-5);
+    let fertileEnd = new Date(ovulation); fertileEnd.setDate(ovulation.getDate()+1);
+    document.getElementById("predictionResultBox").innerHTML = `
+        <div class="prediction-grid" style="display:flex; gap:16px; flex-wrap:wrap;">
+            <div class="prediction-item" style="flex:1; background:white; border-radius:20px; padding:16px;"><strong>🩸 Next Period:</strong> ${next.toDateString()}</div>
+            <div class="prediction-item" style="flex:1; background:white; border-radius:20px; padding:16px;"><strong>🥚 Ovulation:</strong> ${ovulation.toDateString()}</div>
+            <div class="prediction-item" style="flex:1; background:white; border-radius:20px; padding:16px;"><strong>🌸 Fertile Window:</strong> ${fertileStart.toDateString()} – ${fertileEnd.toDateString()}</div>
+        </div>`;
+    document.getElementById("predictionResultBox").style.display = "block";
+}
+async function autoFillFromHistory(){
+    let cycles = await apiCall(`/api/cycles/user/${userId}`, 'GET');
+    if(cycles.length<2){ alert("Need at least 2 cycles"); return; }
+    let avg = await getAverageCycleLength(cycles);
+    if(avg) document.getElementById("cycleLengthInput").value = avg;
+    cycles.sort((a,b)=>new Date(b.Start_Date)-new Date(a.Start_Date));
+    document.getElementById("lastPeriodDate").value = cycles[0].Start_Date;
+    alert("Auto-filled from history!");
+}
+async function saveSettings(){ let form=new FormData(); form.append("userId",userId); form.append("name",document.getElementById("profileName").value); let file=document.getElementById("profilePic").files[0]; if(file) form.append("profilePic",file); try{ await apiCall('/api/settings','POST',form,true); alert("Saved"); }catch(e){} }
+async function loadSettings(){ try{ let data=await apiCall(`/api/settings/${userId}`,'GET'); if(data.Name) document.getElementById("profileName").value=data.Name; if(data.Profile_Pic) document.getElementById("profileImage").src=data.Profile_Pic; }catch(e){} }
+function logout(){ localStorage.removeItem("userId"); window.location.href="/"; }
+function showSection(id){
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    if(id==='dashboard') refreshDashboard();
+    if(id==='cycle') loadCycleHistory();
+    if(id==='reminder') generateSmartReminders();
+    if(id==='report') updateReportInsights();
+}
+document.addEventListener("DOMContentLoaded",()=>{
+    if(!localStorage.getItem("userId")) localStorage.setItem("userId","demo_user_123");
+    showSection('dashboard');
+    loadSettings();
+    refreshDashboard();
+    loadCycleHistory();
+    updateRemindersAndReports();
+});
 </script>
 </body>
 </html>
