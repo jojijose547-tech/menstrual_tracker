@@ -57,12 +57,20 @@ button {
     border: none;
     cursor: pointer;
 }
+
+/* Added slight styling for the settings labels */
+.card label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    margin-top: 10px;
+    display: block;
+}
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav>
     <div onclick="showSection('cycle')">Cycle Entry</div>
     <div onclick="showSection('prediction')">Prediction</div>
@@ -71,9 +79,6 @@ button {
     <div onclick="showSection('settings')">Settings</div>
 </nav>
 
-<!-- ================= SECTIONS ================= -->
-
-<!-- 1. Cycle Data Entry -->
 <div id="cycle" class="section active">
     <div class="card">
         <h2>Menstrual Data Entry</h2>
@@ -93,7 +98,6 @@ button {
     </div>
 </div>
 
-<!-- 2. Prediction -->
 <div id="prediction" class="section">
     <div class="card">
         <h2>Cycle Prediction</h2>
@@ -106,7 +110,6 @@ button {
     </div>
 </div>
 
-<!-- 3. Reminder -->
 <div id="reminder" class="section">
     <div class="card">
         <h2>Reminders</h2>
@@ -121,7 +124,6 @@ button {
     </div>
 </div>
 
-<!-- 4. Reports -->
 <div id="report" class="section">
     <div class="card">
         <h2>Health Insights</h2>
@@ -130,17 +132,29 @@ button {
     </div>
 </div>
 
-<!-- 5. Settings -->
 <div id="settings" class="section">
     <div class="card">
         <h2>Settings & Profile</h2>
+        
+        <label>Display Name:</label>
+        <input type="text" id="profileName" placeholder="Enter your name">
+        
+        <label>Profile Picture:</label>
+        <div id="dpPreview" style="display: none; margin-bottom: 10px;">
+            <img id="profileImage" src="" alt="DP" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #ff6b81;">
+        </div>
+        <input type="file" id="profilePic" accept="image/*">
+        
+        <label>Overall Details (Bio):</label>
+        <input type="text" id="profileDetails" placeholder="Tell us about yourself">
 
-        <button onclick="logout()">Logout</button>
+        <button onclick="saveSettings()">Save Profile</button>
+
+        <hr style="margin: 25px 0; border: 0; border-top: 1px solid #eee;">
+        
+        <button onclick="logout()" style="background: #6c757d;">Logout</button>
     </div>
 </div>
-
-<!-- ================= SCRIPT ================= -->
-
 <script>
 // NAVIGATION
 function showSection(id) {
@@ -155,22 +169,39 @@ const userId = localStorage.getItem("userId");
 
 // ================= API FUNCTIONS =================
 
-// Save Cycle
 async function saveCycle() {
-    await fetch('/api/cycle', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            userId,
-            startDate: startDate.value,
-            endDate: endDate.value,
-            flow: flow.value,
-            mood: mood.value,
-            notes: notes.value
-        })
-    });
+    const userId = localStorage.getItem("userId");
 
-    alert("Cycle saved ✅");
+    if (!userId) {
+        alert("User not logged in ❌");
+        return;
+    }
+
+    try {
+        const res = await fetch('/api/cycle', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                userId: userId,
+                startDate: document.getElementById("startDate").value,
+                endDate: document.getElementById("endDate").value,
+                flow: document.getElementById("flow").value,
+                mood: document.getElementById("mood").value,
+                notes: document.getElementById("notes").value
+            })
+        });
+
+        if (!res.ok) {
+            throw new Error(`Server error: ${res.status}`);
+        }
+
+        const data = await res.json();
+        alert(data.message || "Saved successfully!");
+
+    } catch (error) {
+        console.error("Error saving cycle data:", error);
+        alert("Failed to save data. Please check your connection or server.");
+    }
 }
 
 // Prediction
@@ -217,10 +248,87 @@ async function getReport() {
         " | Status: " + data.status;
 }
 
+// Save Settings (Updated for File Upload)
+async function saveSettings() {
+    const userId = localStorage.getItem("userId");
+
+    if (!userId) {
+        alert("User not logged in ❌");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("userId", userId);
+    formData.append("name", document.getElementById("profileName").value);
+    formData.append("details", document.getElementById("profileDetails").value);
+    
+    // Grab the actual file from the file input
+    const fileInput = document.getElementById("profilePic");
+    if (fileInput.files.length > 0) {
+        // FIX APPLIED HERE: Added to grab the actual file object
+        formData.append("profilePic", fileInput.files);
+    }
+
+    try {
+        const res = await fetch('/api/settings', {
+            method: 'POST',
+            body: formData 
+        });
+
+        if (!res.ok) {
+            throw new Error(`Server error: ${res.status}`);
+        }
+
+        const data = await res.json();
+        alert(data.message || "Profile settings saved successfully!");
+
+    } catch (error) {
+        console.error("Error saving settings:", error);
+        alert("Failed to save settings. Please check your connection or server.");
+    }
+}
+
 // Logout
 function logout() {
     localStorage.removeItem("userId");
     window.location.href = "/";
+}
+
+// Automatically load data when the dashboard opens
+document.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("userId")) {
+        loadSettings();
+    }
+});
+
+// Function to fetch and display the user's saved settings
+async function loadSettings() {
+    const userId = localStorage.getItem("userId");
+    if (!userId) return;
+
+    try {
+        const res = await fetch(`/api/settings/${userId}`);
+        if (!res.ok) throw new Error("Failed to fetch settings");
+        
+        const data = await res.json();
+
+        // Fill the inputs if data exists in the database
+        if (data.Name) {
+            document.getElementById("profileName").value = data.Name;
+        }
+        if (data.Overall_Details) {
+            document.getElementById("profileDetails").value = data.Overall_Details;
+        }
+        
+        // Show the profile picture if it exists
+        if (data.Profile_Pic) {
+            document.getElementById("profileImage").src = data.Profile_Pic;
+            document.getElementById("dpPreview").style.display = "block";
+        }
+
+    } catch (error) {
+        console.error("Error loading profile data:", error);
+    }
 }
 </script>
 
