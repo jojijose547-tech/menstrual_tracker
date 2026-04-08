@@ -335,7 +335,7 @@ button:hover {
 <!-- DASHBOARD -->
 <div id="dashboard" class="section active">
     <div class="card">
-        <h2><i class="fas fa-leaf"></i> Creamy Health Dashboard</h2>
+        <h2><i class="fas fa-leaf"></i>  Health Dashboard</h2>
         <div class="dash-tiles">
             <div class="tile"><div class="label">Total Cycles</div><div class="number" id="totalCycles">--</div></div>
             <div class="tile"><div class="label">Avg Cycle</div><div class="number" id="avgCycleLen">--</div><div>days</div></div>
@@ -343,9 +343,9 @@ button:hover {
             <div class="tile"><div class="label">Next Period</div><div class="number" id="nextPeriodEst">--</div></div>
         </div>
         <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-            <div class="insight-card" style="flex:1"><h3>💧 Most Common Flow</h3><div style="font-size:2rem; font-weight:800; color:#bd8f6b;" id="commonFlow">-</div></div>
-            <div class="insight-card" style="flex:1"><h3>😌 Frequent Mood</h3><div style="font-size:2rem; font-weight:800; color:#bd8f6b;" id="commonMood">-</div></div>
-            <div class="insight-card" style="flex:1"><h3>📋 Regularity</h3><div id="regularityStatus">⚖️ Balanced</div></div>
+            <div class="insight-card" style="flex:1"><h3> Most Common Flow</h3><div style="font-size:2rem; font-weight:800; color:#bd8f6b;" id="commonFlow">-</div></div>
+            <div class="insight-card" style="flex:1"><h3> Frequent Mood</h3><div style="font-size:2rem; font-weight:800; color:#bd8f6b;" id="commonMood">-</div></div>
+            <div class="insight-card" style="flex:1"><h3>Regularity</h3><div id="regularityStatus">⚖️ Balanced</div></div>
         </div>
     </div>
 </div>
@@ -364,13 +364,13 @@ button:hover {
         </div>
         <button onclick="saveCycle()"><i class="fas fa-save"></i> Save Cycle</button>
         <div style="margin-top:24px; background:#fff4ea; padding:18px; border-radius:32px;">
-            <label>✏️ Edit existing:</label>
+            <label>Edit existing:</label>
             <select id="editCycleSelect" style="margin:0 12px; width:auto; display:inline-block;"></select>
             <button class="btn-outline" onclick="loadCycleForEdit()">Load</button>
             <button style="background:#c6a17e; color:white;" onclick="updateCycle()">Update</button>
         </div>
     </div>
-    <div class="card"><h2>📜 Cycle History</h2><div id="cycleHistoryList">Loading history...</div></div>
+    <div class="card"><h2> Cycle History</h2><div id="cycleHistoryList">Loading history...</div></div>
 </div>
 
 <!-- PREDICTION -->
@@ -382,16 +382,16 @@ button:hover {
             <div class="input-group"><label>Avg Cycle Length</label><input type="number" id="cycleLengthInput" placeholder="28"></div>
             <button class="btn-outline" onclick="autoFillFromHistory()"><i class="fas fa-history"></i> Use History</button>
         </div>
-        <button onclick="calculatePrediction()">✨ Predict Now</button>
+        <button onclick="calculatePrediction()">Predict Now</button>
         <div id="predictionResultBox" style="margin-top:24px; display:none;"></div>
     </div>
 </div>
 
 <!-- REMINDERS -->
 <div id="reminder" class="section">
-    <div class="card"><h2><i class="fas fa-bell"></i> Gentle Reminders</h2>
+    <div class="card"><h2><i class="fas fa-bell"></i> Reminders</h2>
         <div id="liveRemindersList"></div>
-        <h3>📅 Set custom nudge</h3>
+        <h3> Set custom nudge</h3>
         <div class="form-row">
             <select id="reminderType"><option>Period Starting Soon</option><option>Ovulation Window</option><option>Cycle Data Entry</option><option>Custom</option></select>
             <input type="datetime-local" id="reminderDate">
@@ -408,10 +408,10 @@ button:hover {
         <div id="monthlyReportContent"></div>
         <h3>Key Analytics</h3>
         <div id="keyInsights" style="display:flex; flex-wrap:wrap; gap:16px;">
-            <div class="insight-card">📊 Avg Cycle: <strong id="reportAvgCycle">--</strong></div>
-            <div class="insight-card">⚠️ Irregularity: <strong id="irregularStatus">--</strong></div>
-            <div class="insight-card">📝 Symptom Patterns: <strong id="symptomPatterns">--</strong></div>
-            <div class="insight-card">🌸 Flow+Mood Combo: <strong id="commonCombo">--</strong></div>
+            <div class="insight-card"> Avg Cycle: <strong id="reportAvgCycle">--</strong></div>
+            <div class="insight-card"> Irregularity: <strong id="irregularStatus">--</strong></div>
+            <div class="insight-card"> Symptom Patterns: <strong id="symptomPatterns">--</strong></div>
+            <div class="insight-card"> Flow+Mood Combo: <strong id="commonCombo">--</strong></div>
         </div>
     </div>
 </div>
@@ -553,19 +553,19 @@ async function generateSmartReminders() {
             nextPeriod.setDate(nextPeriod.getDate() + avgLen);
             let today = new Date(); today.setHours(0,0,0,0);
             let daysDiff = Math.ceil((nextPeriod - today)/(1000*3600*24));
-            if(daysDiff <= 3 && daysDiff >= 0) remindersHtml += `<div class="reminder-alert">🌸 Period approaching! in ${daysDiff} days.</div>`;
+            if(daysDiff <= 3 && daysDiff >= 0) remindersHtml += `<div class="reminder-alert"> Period approaching! in ${daysDiff} days.</div>`;
             let ovulation = new Date(nextPeriod); ovulation.setDate(nextPeriod.getDate() - 14);
             let fertileStart = new Date(ovulation); fertileStart.setDate(ovulation.getDate()-5);
             let fertileEnd = new Date(ovulation); fertileEnd.setDate(ovulation.getDate()+1);
-            if(today >= fertileStart && today <= fertileEnd) remindersHtml += `<div class="reminder-alert">🥚 Fertile window active (ovulation).</div>`;
+            if(today >= fertileStart && today <= fertileEnd) remindersHtml += `<div class="reminder-alert"> Fertile window active (ovulation).</div>`;
         }
         let daysSinceLast = Math.ceil((new Date() - new Date(lastCycle.Start_Date))/(1000*3600*24));
-        if(daysSinceLast > 30) remindersHtml += `<div class="reminder-alert">📝 Reminder: update your cycle entry.</div>`;
-        if(!remindersHtml) remindersHtml = "<div class='reminder-alert'>✅ Everything aligned. Stay well.</div>";
+        if(daysSinceLast > 30) remindersHtml += `<div class="reminder-alert"> Reminder: update your cycle entry.</div>`;
+        if(!remindersHtml) remindersHtml = "<div class='reminder-alert'> Everything aligned. Stay well.</div>";
         document.getElementById("liveRemindersList").innerHTML = remindersHtml;
         let saved = JSON.parse(localStorage.getItem("customReminders") || "[]");
-        let savedHtml = "<h3>📌 Saved reminders</h3>";
-        saved.forEach((r,idx)=>{ savedHtml += `<div class='reminder-alert'>🔔 ${r.type} on ${new Date(r.date).toLocaleString()} <button style="background:#dcb48b;" onclick="deleteReminder(${idx})">X</button></div>`; });
+        let savedHtml = "<h3> Saved reminders</h3>";
+        saved.forEach((r,idx)=>{ savedHtml += `<div class='reminder-alert'> ${r.type} on ${new Date(r.date).toLocaleString()} <button style="background:#dcb48b;" onclick="deleteReminder(${idx})">X</button></div>`; });
         document.getElementById("savedRemindersList").innerHTML = savedHtml;
     } catch(e){}
 }
