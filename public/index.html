@@ -2,634 +2,596 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CycleCare - Your Trusted Menstrual Companion</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Menstrual Tracker | Cycle & Wellness Companion</title>
+
+<!-- Premium Fonts: Playfair for elegance, Inter for modern readability -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
 
 <style>
-    :root {
-        --primary: #ff6b81;
-        --primary-light: #ff9fb0;
-        --primary-dark: #e55a6e;
-        --secondary: #a8e6cf;
-        --accent: #ffd93d;
-        --bg-gradient: linear-gradient(135deg, #fff0f3 0%, #f8f9ff 50%, #ffffff 100%);
-        --text-main: #2c2c2c;
-        --text-light: #6b7280;
-        --glass-bg: rgba(255, 255, 255, 0.85);
-    }
-
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
 
-    html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 100px;
+    :root {
+        --deep-blush: #e8b4b8;      /* soft menstrual red */
+        --rose-dust: #d9a5a9;
+        --sand-dune: #f2e3db;
+        --clay-base: #faf6f2;
+        --warm-stone: #7f6b5e;
+        --charcoal-soft: #3a3532;
+        --petal-white: #ffffff;
+        --golden-glow: #e9c9b0;
+        --shadow-sm: 0 20px 35px -12px rgba(90, 60, 50, 0.12);
+        --shadow-hover: 0 35px 45px -18px rgba(70, 45, 35, 0.2);
+        --glass-border: rgba(232, 180, 184, 0.25);
     }
 
     body {
-        background: var(--bg-gradient);
-        color: var(--text-main);
+        background: linear-gradient(145deg, var(--clay-base) 0%, #fef7f2 100%);
+        font-family: 'Inter', sans-serif;
+        color: var(--charcoal-soft);
         overflow-x: hidden;
-        line-height: 1.7;
+        scroll-behavior: smooth;
     }
 
-    /* Enhanced Navbar */
-    nav {
+    h1, h2, h3, .serif-heading {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+
+    /* premium navbar */
+    .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1.5rem 5%;
+        padding: 1rem 6%;
         position: fixed;
-        top: 0;
         width: 100%;
-        background: var(--glass-bg);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        top: 0;
         z-index: 1000;
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    nav.scrolled {
-        padding: 1rem 5%;
-        backdrop-filter: blur(30px);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-    }
-
-    nav h1 {
-        font-size: 1.8rem;
-        font-weight: 900;
-        background: linear-gradient(135deg, var(--primary), var(--primary-light));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-    }
-
-    nav h1:hover {
-        transform: scale(1.05);
-    }
-
-    nav div a {
-        margin-left: 2rem;
-        text-decoration: none;
-        color: var(--text-main);
-        font-weight: 600;
-        font-size: 0.95rem;
-        position: relative;
+        background: rgba(250, 246, 242, 0.82);
+        backdrop-filter: blur(18px);
         transition: all 0.3s ease;
-        padding: 0.5rem 1rem;
-        border-radius: 25px;
+        border-bottom: 1px solid var(--glass-border);
     }
 
-    nav div a:hover {
-        color: var(--primary);
-        background: rgba(255, 107, 129, 0.1);
+    .navbar.scrolled {
+        padding: 0.7rem 6%;
+        background: rgba(250, 246, 242, 0.94);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .logo {
+        font-size: 1.7rem;
+        font-weight: 700;
+        font-family: 'Playfair Display', serif;
+        background: linear-gradient(135deg, #b47c7e, #7f5e53);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .logo:hover { transform: scale(1.02); }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        font-weight: 500;
+        color: var(--warm-stone);
+        transition: 0.2s;
+        font-size: 0.95rem;
+        letter-spacing: -0.2px;
+    }
+
+    .nav-links a:hover { color: #b05e5e; }
+
+    .btn-outline-nav {
+        border: 1px solid var(--deep-blush);
+        padding: 0.5rem 1.4rem;
+        border-radius: 40px;
+        background: transparent;
+        transition: 0.25s;
+    }
+
+    .btn-outline-nav:hover {
+        background: var(--deep-blush);
+        color: white !important;
+    }
+
+    .btn-primary-nav {
+        background: linear-gradient(105deg, #d9a5a9, #bc7f7a);
+        padding: 0.5rem 1.6rem;
+        border-radius: 40px;
+        color: white !important;
+        box-shadow: 0 6px 12px rgba(188, 127, 122, 0.25);
+        transition: 0.25s;
+    }
+
+    .btn-primary-nav:hover {
         transform: translateY(-2px);
+        box-shadow: 0 12px 18px rgba(188, 127, 122, 0.3);
     }
 
-    /* Hero Section - Enhanced */
+    /* hero section - new fluid layout */
     .hero {
         min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 5%;
-        position: relative;
-        overflow: hidden;
+        gap: 4rem;
+        padding: 8rem 6% 4rem;
+        flex-wrap: wrap;
     }
 
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(circle at 20% 80%, rgba(255, 107, 129, 0.1) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 20%, rgba(168, 230, 207, 0.1) 0%, transparent 50%);
-        z-index: 0;
+    .hero-left {
+        flex: 1.2;
+        max-width: 580px;
     }
 
-    .hero-content {
-        max-width: 550px;
-        z-index: 2;
-        position: relative;
-    }
-
-    .hero-content h1 {
-        font-size: clamp(2.5rem, 5vw, 4.5rem);
-        font-weight: 900;
-        line-height: 1.1;
+    .hero-badge {
+        display: inline-block;
+        background: rgba(233, 201, 176, 0.3);
+        backdrop-filter: blur(4px);
+        padding: 0.4rem 1rem;
+        border-radius: 60px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: #a57264;
         margin-bottom: 1.5rem;
-        background: linear-gradient(135deg, var(--text-main) 0%, var(--primary) 50%, var(--primary-dark) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        border: 0.5px solid #eedbcb;
+    }
+
+    .hero-left h1 {
+        font-size: clamp(2.6rem, 5vw, 4.3rem);
+        line-height: 1.2;
+        margin-bottom: 1.2rem;
+    }
+
+    .hero-gradient-text {
+        background: linear-gradient(125deg, #a16358, #c48a7a, #e3b0a4);
         background-clip: text;
-    }
-
-    .hero-content .highlight {
-        background: linear-gradient(135deg, var(--primary), var(--primary-light));
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        position: relative;
+        color: transparent;
     }
 
-    .hero-content .highlight::after {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-        width: 60px;
-        height: 4px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-        border-radius: 2px;
-        animation: shine 2s infinite;
+    .hero-description {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #5f4e45;
+        margin: 1.5rem 0 2rem;
+        font-weight: 400;
     }
 
-    @keyframes shine {
-        0%, 100% { box-shadow: 0 0 10px var(--primary); }
-        50% { box-shadow: 0 0 20px var(--primary), 0 0 30px var(--accent); }
-    }
-
-    .hero-content p {
-        font-size: 1.25rem;
-        color: var(--text-light);
-        margin-bottom: 2.5rem;
-        opacity: 0.9;
-    }
-
-    .cta-buttons {
+    .hero-buttons {
         display: flex;
         gap: 1rem;
         flex-wrap: wrap;
     }
 
-    .btn-primary, .btn-secondary {
-        padding: 1rem 2.5rem;
-        font-size: 1.1rem;
-        font-weight: 700;
-        border: none;
-        cursor: pointer;
-        border-radius: 50px;
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        position: relative;
-        overflow: hidden;
-    }
-
     .btn-primary {
-        background: linear-gradient(135deg, var(--primary), var(--primary-light));
+        background: linear-gradient(100deg, #c28b7e, #aa6d61);
+        border: none;
+        padding: 0.9rem 2rem;
+        border-radius: 48px;
         color: white;
-        box-shadow: 0 12px 30px rgba(255, 107, 129, 0.4);
+        font-weight: 600;
+        font-family: 'Inter', sans-serif;
+        cursor: pointer;
+        transition: all 0.2s;
+        box-shadow: 0 12px 20px -10px #d9a89e;
     }
 
     .btn-primary:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 20px 40px rgba(255, 107, 129, 0.5);
+        transform: translateY(-3px);
+        filter: brightness(1.02);
+        box-shadow: 0 18px 25px -12px #c48a7a;
     }
 
     .btn-secondary {
         background: transparent;
-        color: var(--primary);
-        border: 2px solid rgba(255, 107, 129, 0.3);
-        font-weight: 700;
+        border: 1.5px solid #dbb6ae;
+        padding: 0.9rem 2rem;
+        border-radius: 48px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: 0.2s;
+        color: #7c5c51;
     }
 
     .btn-secondary:hover {
-        background: rgba(255, 107, 129, 0.1);
-        transform: translateY(-4px);
-        border-color: var(--primary);
+        background: rgba(219, 182, 174, 0.15);
+        transform: translateY(-2px);
     }
 
-    /* Enhanced Hero Visual */
-    .hero-visual {
-        width: 500px;
-        height: 500px;
+    /* Hero image – menstrual wellness (calm & cycle awareness) */
+    .hero-right {
+        flex: 1;
         position: relative;
-        z-index: 1;
-        filter: drop-shadow(0 30px 60px rgba(255, 107, 129, 0.2));
+        min-width: 280px;
     }
 
-    .shape-main {
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(145deg, #ffe4e9, #f8d7e0);
-        border-radius: 35% 65% 70% 30% / 30% 35% 65% 70%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        animation: morphMain 10s ease-in-out infinite;
-        box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.6),
-                    0 20px 60px rgba(255, 107, 129, 0.2);
-    }
-
-    .shape-inner {
-        width: 60%;
-        height: 60%;
-        background: linear-gradient(145deg, #fff5f8, #f0e8f0);
-        border-radius: 50%;
-        position: absolute;
-        top: 20%;
-        left: 20%;
-        animation: morphInner 12s ease-in-out infinite reverse;
-        box-shadow: 0 10px 30px rgba(255, 107, 129, 0.15);
-    }
-
-    .particles {
-        position: absolute;
-        width: 100%;
-        height: 100%;
+    .hero-image-card {
+        border-radius: 48% 52% 34% 66% / 56% 38% 62% 44%;
         overflow: hidden;
+        background: #f1e3db;
+        box-shadow: var(--shadow-hover);
+        transition: transform 0.5s ease;
     }
 
-    .particle {
-        position: absolute;
-        background: var(--primary);
-        border-radius: 50%;
-        opacity: 0.6;
-        animation: floatParticle 15s infinite linear;
+    .hero-image-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.7s;
     }
 
-    .particle:nth-child(1) { width: 8px; height: 8px; top: 10%; left: 20%; animation-delay: 0s; }
-    .particle:nth-child(2) { width: 12px; height: 12px; top: 60%; right: 15%; animation-delay: 3s; }
-    .particle:nth-child(3) { width: 6px; height: 6px; bottom: 20%; left: 60%; animation-delay: 6s; }
-
-    @keyframes morphMain {
-        0%, 100% { border-radius: 35% 65% 70% 30% / 30% 35% 65% 70%; }
-        33% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-        66% { border-radius: 50% 50% 50% 50% / 60% 30% 70% 40%; }
+    .hero-image-card:hover img {
+        transform: scale(1.02);
     }
 
-    @keyframes morphInner {
-        0%, 100% { border-radius: 50%; transform: rotate(0deg) scale(1); }
-        50% { border-radius: 30% 70% 70% 30%; transform: rotate(180deg) scale(1.1); }
-    }
-
-    @keyframes floatParticle {
-        0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-        10% { opacity: 0.6; }
-        90% { opacity: 0.6; }
-        100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-    }
-
-    /* Features Section - Enhanced */
-    .features {
-        padding: 120px 5%;
+    /* Feature section – premium cards with menstrual imagery */
+    .features-section {
+        padding: 5rem 6% 3rem;
         max-width: 1400px;
         margin: 0 auto;
     }
 
     .section-header {
         text-align: center;
-        margin-bottom: 5rem;
+        margin-bottom: 3rem;
     }
 
     .section-header h2 {
-        font-size: clamp(2.5rem, 4vw, 3.5rem);
-        font-weight: 900;
-        margin-bottom: 1rem;
-        background: linear-gradient(135deg, var(--text-main), var(--primary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 0.8rem;
     }
 
     .section-header p {
-        font-size: 1.25rem;
-        color: var(--text-light);
+        font-size: 1.1rem;
+        color: #7a645a;
         max-width: 600px;
         margin: 0 auto;
-        opacity: 0.9;
     }
 
-    .cards {
+    .cards-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
         gap: 2rem;
-        margin-top: 4rem;
+        margin-top: 2rem;
     }
 
-    .card {
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(10px);
-        padding: 2.5rem 2rem;
-        border-radius: 24px;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        position: relative;
+    .track-card {
+        background: var(--petal-white);
+        border-radius: 2rem;
         overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         opacity: 0;
-        transform: translateY(60px);
+        transform: translateY(45px);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(219, 182, 174, 0.3);
     }
 
-    .card.show {
+    .track-card.reveal {
         opacity: 1;
         transform: translateY(0);
     }
 
-    .card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent), var(--primary));
-        background-size: 300% 100%;
-        animation: gradientShift 3s ease infinite;
+    .track-card:hover {
+        transform: translateY(-12px) scale(1.01);
+        box-shadow: var(--shadow-hover);
     }
 
-    @keyframes gradientShift {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
+    .card-img {
+        height: 220px;
+        overflow: hidden;
     }
 
-    .card:hover {
-        transform: translateY(-20px) scale(1.02);
-        box-shadow: 0 30px 80px rgba(255, 107, 129, 0.25);
-        border-color: rgba(255, 107, 129, 0.3);
+    .card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
     }
 
-    .card-icon {
-        font-size: 3rem;
-        margin-bottom: 1.5rem;
-        display: block;
-        filter: drop-shadow(0 4px 12px rgba(255, 107, 129, 0.3));
-        transition: transform 0.3s ease;
+    .track-card:hover .card-img img {
+        transform: scale(1.06);
     }
 
-    .card:hover .card-icon {
-        transform: scale(1.2) rotate(10deg);
+    .card-content {
+        padding: 1.8rem;
     }
 
-    .card h3 {
-        font-size: 1.5rem;
-        font-weight: 800;
-        margin-bottom: 1rem;
-        color: var(--primary);
+    .card-content h3 {
+        font-size: 1.6rem;
+        margin-bottom: 0.7rem;
+        font-weight: 700;
     }
 
-    .card p {
-        color: var(--text-light);
-        font-size: 1rem;
-        line-height: 1.8;
+    .card-content p {
+        color: #5e4d44;
+        line-height: 1.5;
+        font-weight: 400;
     }
 
-    /* Stats Section */
-    .stats {
-        background: linear-gradient(135deg, rgba(255, 107, 129, 0.05), rgba(168, 230, 207, 0.05));
-        padding: 100px 5%;
+    /* stats + wellness section (testimonial & blobs removed) */
+    .stats-banner {
+        background: linear-gradient(120deg, #fae9e2, #fff2ec);
+        border-radius: 3rem;
+        margin: 2rem 6% 4rem;
+        padding: 3.5rem 2rem;
         text-align: center;
+        border: 1px solid #f5ddd3;
     }
 
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 3rem;
-        margin-top: 4rem;
+    .stats-flex {
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        flex-wrap: wrap;
     }
 
-    .stat-item {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 1s ease;
-    }
-
-    .stat-item.show {
-        opacity: 1;
-        transform: translateY(0);
+    .stat-cell {
+        text-align: center;
     }
 
     .stat-number {
-        font-size: 4rem;
-        font-weight: 900;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #b47c7e, #936a5c);
+        background-clip: text;
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: transparent;
         display: block;
-        margin-bottom: 0.5rem;
+        line-height: 1;
     }
 
     .stat-label {
-        font-size: 1.1rem;
-        color: var(--text-light);
-        font-weight: 600;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 500;
+        color: #8e7166;
     }
 
-    /* Footer */
-    footer {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
+    /* extra cards section (additional features without any quotes) */
+    .extra-features {
+        padding: 1rem 6% 5rem;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    /* footer */
+    .footer {
         text-align: center;
-        padding: 4rem 5% 2rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.5);
-        margin-top: 5rem;
+        padding: 2.5rem;
+        border-top: 1px solid var(--glass-border);
+        font-size: 0.85rem;
+        color: #8f776b;
     }
 
-    /* Animations */
-    .animate-in {
-        opacity: 0;
-        transform: translateY(50px);
-        animation: slideUpFade 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    }
-
-    .delay-1 { animation-delay: 0.3s; }
-    .delay-2 { animation-delay: 0.6s; }
-    .delay-3 { animation-delay: 0.9s; }
-
-    @keyframes slideUpFade {
-        to { 
-            opacity: 1; 
-            transform: translateY(0); 
-        }
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        .hero {
-            flex-direction: column;
-            text-align: center;
-            padding-top: 120px;
-        }
-        
-        .hero-visual {
-            width: 350px;
-            height: 350px;
-            margin-top: 3rem;
-        }
-        
-        .cta-buttons {
-            justify-content: center;
-        }
-        
-        nav {
-            padding: 1rem 5%;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        nav div {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        nav div a {
-            margin: 0;
-        }
+    @media (max-width: 850px) {
+        .hero { flex-direction: column; text-align: center; padding-top: 7rem;}
+        .hero-buttons { justify-content: center; }
+        .navbar .nav-links { gap: 1rem; }
     }
 </style>
 </head>
 <body>
 
-<nav id="navbar">
-    <h1 onclick="scrollToTop()">CycleCare</h1>
-    <div>
-        <a href="#features">Features</a>
-        <a href="#stats">Why Us</a>
-        <a href="login.html" class="btn-secondary">Login</a>
-        <a href="register.html" class="btn-primary">Get Started</a>
+<nav class="navbar" id="navbar">
+    <div class="logo" onclick="window.scrollTo({top:0, behavior:'smooth'})">🌙 Menstrual Tracker</div>
+    <div class="nav-links">
+        
+        <a href="login.html" class="btn-outline-nav">Log in</a>
+        <a href="register.html" class="btn-primary-nav">Start free</a>
     </div>
 </nav>
 
+<!-- Hero section with menstrual wellness imagery -->
 <section class="hero">
-    <div class="hero-content">
-        <h1 class="animate-in">
-            Track Your <span class="highlight">Cycle.</span><br>
-            Understand Your <span class="highlight">Body.</span>
-        </h1>
-        <p class="animate-in delay-1">
-            CycleCare is your personal menstrual health companion. Seamlessly track cycles, predict periods 
-            with AI-powered accuracy, monitor symptoms, and gain deep insights into your reproductive health. 
-            Join 500K+ women who trust CycleCare for their wellness journey.
-        </p>
-        <div class="cta-buttons animate-in delay-2">
-            <button class="btn-primary" onclick="startDemo()">Start Free Trial</button>
-            <button class="btn-secondary" onclick="scrollToFeatures()">See Features</button>
+    <div class="hero-left">
+        <span class="hero-badge">✨ Track. Understand. Flourish.</span>
+        <h1>Your cycle,<br> your <span class="hero-gradient-text">natural rhythm</span></h1>
+        <p class="hero-description">Menstrual tracking meets intuitive design — predict periods, log moods, symptoms & unlock body literacy with Menstrual Tracker. Trusted by women embracing cycle awareness daily.</p>
+        <div class="hero-buttons">
+            <button class="btn-primary" onclick="alert('✨ Start your wellness journey — demo flow ✨')">Begin tracking →</button>
+            <button class="btn-secondary" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Discover features</button>
         </div>
     </div>
-    
-    <div class="hero-visual animate-in delay-3">
-        <div class="shape-main"></div>
-        <div class="shape-inner"></div>
-        <div class="particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
+    <div class="hero-right">
+        <div class="hero-image-card">
+            <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Woman embracing menstrual wellness with calm and tracker journal" loading="eager">
         </div>
     </div>
 </section>
 
-<section id="features" class="features">
+<!-- Features section: menstrual tracking specific cards with relevant images -->
+<section id="features" class="features-section">
     <div class="section-header">
-        <h2>Empowering Your Health</h2>
-        <p>Everything you need to stay in tune with your body, beautifully designed and simple to use.</p>
+        <h2>🌸 Cycle intelligence, simplified</h2>
+        <p>From period logs to ovulation insights — designed with empathy and science.</p>
     </div>
-    
-    <div class="cards">
-        <div class="card fade-element">
-            <span class="card-icon"></span>
-            <h3>Cycle Tracking</h3>
-            <p>Log your period dates, flow intensity, moods, and daily symptoms seamlessly with just a few taps.</p>
+    <div class="cards-grid">
+        <div class="track-card fade-card">
+            <div class="card-img">
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Person noting menstrual cycle on calendar with flowers">
+            </div>
+            <div class="card-content">
+                <h3>📆 Period tracker</h3>
+                <p>Log flow intensity, cramps, bloating, and energy levels. Visual calendar shows your unique patterns, upcoming dates, and historical trends.</p>
+            </div>
         </div>
-        
-        <div class="card fade-element" style="transition-delay: 0.1s;">
-            <span class="card-icon"></span>
-            <h3>Smart Predictions</h3>
-            <p>AI-powered algorithms predict your next period, ovulation day, and fertile windows with remarkable accuracy.</p>
+        <div class="track-card fade-card">
+            <div class="card-img">
+                <img src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Woman practicing self care and symptom tracking">
+            </div>
+            <div class="card-content">
+                <h3>🧘‍♀️ Symptom & mood log</h3>
+                <p>Understand premenstrual shifts, track headaches, acne, sleep quality, and emotional wellness. Personalized insights to embrace each phase.</p>
+            </div>
         </div>
-        
-        <div class="card fade-element" style="transition-delay: 0.2s;">
-            <span class="card-icon"></span>
-            <h3>Gentle Reminders</h3>
-            <p>Get customized, discreet notifications for upcoming cycles, ovulation phases, and medication reminders.</p>
-        </div>
-        
-        <div class="card fade-element" style="transition-delay: 0.3s;">
-            <span class="card-icon"></span>
-            <h3>Health Insights</h3>
-            <p>Visualize your data with beautiful charts to recognize patterns, understand your mood, and share with your doctor.</p>
-        </div>
-    </div>
-</section>
-
-<section id="stats" class="stats">
-    <div class="section-header">
-        <h2>Trusted by Women Worldwide</h2>
-        <p>Join a growing community prioritizing their menstrual and reproductive health.</p>
-    </div>
-    
-    <div class="stats-grid">
-        <div class="stat-item fade-element">
-            <span class="stat-number">500K+</span>
-            <span class="stat-label">Active Users</span>
-        </div>
-        <div class="stat-item fade-element" style="transition-delay: 0.2s;">
-            <span class="stat-number">98%</span>
-            <span class="stat-label">Prediction Accuracy</span>
-        </div>
-        <div class="stat-item fade-element" style="transition-delay: 0.4s;">
-            <span class="stat-number">4.9/5</span>
-            <span class="stat-label">App Store Rating</span>
+        <div class="track-card fade-card">
+            <div class="card-img">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ovulation awareness with blooming fertility illustration">
+            </div>
+            <div class="card-content">
+                <h3>🌿 Ovulation & fertile window</h3>
+                <p>Smart predictions for ovulation day, fertile days & cycle phases. Sync with body signals for natural planning or awareness.</p>
+            </div>
         </div>
     </div>
 </section>
 
-<footer>
-    <p>© 2026 CycleCare. Built with ❤️ for your well-being.</p>
+<!-- Stats + premium trust metrics (no review or blobs) -->
+<div class="stats-banner">
+    <div class="stats-flex">
+        <div class="stat-cell">
+            <span class="stat-number" data-target="520">0</span><span class="stat-number">K+</span>
+            <div class="stat-label">Community members</div>
+        </div>
+        <div class="stat-cell">
+            <span class="stat-number" data-target="97">0</span><span class="stat-number">%</span>
+            <div class="stat-label">Cycle prediction accuracy</div>
+        </div>
+        <div class="stat-cell">
+            <span class="stat-number" data-target="4.9">0</span><span class="stat-number">★</span>
+            <div class="stat-label">User rating (App Store)</div>
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <p>🌙 Menstrual Tracker — crafted with care for every body rhythm. © 2026 | menstrual wellness redefined</p>
 </footer>
 
 <script>
-    // 1. Navbar Scroll Effect (Glassmorphism transition)
-    const navbar = document.getElementById('navbar');
+    // Intersection Observer for card reveal + scroll animations & stat counter
+    const fadeElements = document.querySelectorAll('.fade-card');
+    const statNumbers = document.querySelectorAll('.stat-number');
+
+    // Navbar background change on scroll
+    const nav = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
+        if (window.scrollY > 40) {
+            nav.classList.add('scrolled');
         } else {
-            navbar.classList.remove('scrolled');
+            nav.classList.remove('scrolled');
         }
     });
 
-    // 2. Intersection Observer for Scroll Animations
-    const observerOptions = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
-    };
+    // Counter function for stats
+    function startCounters() {
+        statNumbers.forEach(el => {
+            let targetRaw = el.getAttribute('data-target');
+            if (!targetRaw) return;
+            let target = parseFloat(targetRaw);
+            let suffix = '';
+            if (el.innerText.includes('K+')) suffix = 'K+';
+            else if (el.innerText.includes('%')) suffix = '%';
+            else if (el.innerText.includes('★')) suffix = '★';
+            
+            let current = 0;
+            let increment = target / 60;
+            const updateCounter = () => {
+                if (current < target) {
+                    current += increment;
+                    if (current > target) current = target;
+                    let displayVal = Math.floor(current);
+                    if (suffix === '★') displayVal = current.toFixed(1);
+                    el.innerText = (suffix === '★' ? displayVal : Math.floor(displayVal)) + suffix;
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    el.innerText = (suffix === '★' ? target.toFixed(1) : Math.floor(target)) + suffix;
+                }
+            };
+            updateCounter();
+        });
+    }
 
+    // Animation Observer with reveal and dynamic counters when stats visible
     const observer = new IntersectionObserver((entries) => {
+        let statsRevealed = false;
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-                observer.unobserve(entry.target); // Run once per element
+                entry.target.classList.add('reveal');
+                if (entry.target.classList.contains('stats-banner')) {
+                    if (!statsRevealed) {
+                        statsRevealed = true;
+                        startCounters();
+                    }
+                }
+                // unobserve after reveal
+                if (!entry.target.classList.contains('stats-banner')) observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.2, rootMargin: "0px 0px -40px 0px" });
 
-    // Attach observer to cards and stat items
-    document.querySelectorAll('.fade-element').forEach(el => {
-        observer.observe(el);
+    // observe all track cards
+    document.querySelectorAll('.track-card').forEach(card => observer.observe(card));
+    // also observe stats banner for counter trigger
+    const statsBanner = document.querySelector('.stats-banner');
+    if (statsBanner) observer.observe(statsBanner);
+
+    // immediate preload check for cards already visible (in case)
+    const preReveal = () => {
+        const cards = document.querySelectorAll('.track-card');
+        const windowHeight = window.innerHeight;
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            if (rect.top < windowHeight - 100) {
+                card.classList.add('reveal');
+                observer.unobserve(card);
+            }
+        });
+    };
+    preReveal();
+    window.addEventListener('scroll', preReveal);
+
+    // Add micro parallax effect on hero image card
+    const heroCard = document.querySelector('.hero-image-card');
+    if (heroCard) {
+        document.addEventListener('mousemove', (e) => {
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 45;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 45;
+            heroCard.style.transform = `perspective(800px) rotateY(${xAxis * 0.5}deg) rotateX(${yAxis * -0.3}deg) translateY(-4px)`;
+        });
+        document.addEventListener('mouseleave', () => {
+            heroCard.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg)';
+        });
+    }
+
+    // logo smooth scroll to top
+    window.scrollToTop = function() { window.scrollTo({top:0, behavior:'smooth'}); };
+    
+    // demo alert for cta
+    const ctaBtn = document.querySelector('.btn-primary');
+    if (ctaBtn) {
+        ctaBtn.addEventListener('click', () => {
+            alert("🌸 Welcome to Menstrual Tracker — your personal cycle companion. Start adding your first period log today!");
+        });
+    }
+
+    // Hover animations for card enhancements
+    const cards = document.querySelectorAll('.track-card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transition = 'all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+        });
     });
-
-    // 3. Navigation Functions
-    function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function scrollToFeatures() {
-        document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function startDemo() {
-        alert('Redirecting to the registration page to start your free trial!');
-        // In a real app, you would route to the registration page here:
-        // window.location.href = 'register.html';
-    }
 </script>
-
 </body>
 </html>

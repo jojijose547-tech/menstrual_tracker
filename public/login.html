@@ -2,52 +2,140 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | CycleCare</title>
 
 <style>
-body {
-    font-family: Arial;
-    background: #f5f6fa;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-.container {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    width: 300px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-h2 { text-align: center; }
-input, button {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-}
-button {
-    background: #ff6b81;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-a {
-    text-decoration: none;
-    color: #ff6b81;
-}
+    /* Premium Font Pairings: Elegant Serif for headings, clean Sans for UI */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap');
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        /* A very soft, warm, premium cream gradient */
+        background: linear-gradient(135deg, #fdfcfb 0%, #f4eee5 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: #4a443f;
+    }
+
+    .container {
+        background: #ffffff;
+        padding: 50px 45px;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 420px;
+        /* Soft, warm shadow instead of harsh grey */
+        box-shadow: 0 20px 40px rgba(185, 175, 160, 0.2);
+        border: 1px solid rgba(220, 210, 195, 0.4);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 35px;
+        font-family: 'Playfair Display', serif;
+        font-weight: 600;
+        font-size: 32px;
+        color: #2c2825;
+        letter-spacing: -0.5px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    input {
+        width: 100%;
+        padding: 16px 20px;
+        border: 1px solid #e8e3dc;
+        border-radius: 8px;
+        background: #fbfaf8;
+        font-size: 15px;
+        font-family: 'Inter', sans-serif;
+        color: #4a443f;
+        transition: all 0.4s ease;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #c9b49e;
+        background: #ffffff;
+        box-shadow: 0 0 0 3px rgba(201, 180, 158, 0.15);
+    }
+
+    input::placeholder {
+        color: #b0a8a0;
+        font-weight: 300;
+    }
+
+    button {
+        width: 100%;
+        padding: 18px;
+        margin-top: 15px;
+        /* Elegant muted champagne/taupe gradient */
+        background: linear-gradient(135deg, #d1bea7, #bca589);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 20px rgba(188, 165, 137, 0.25);
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 25px rgba(188, 165, 137, 0.35);
+        background: linear-gradient(135deg, #d8c7b2, #c5af95);
+    }
+
+    button:active {
+        transform: translateY(1px);
+        box-shadow: 0 5px 10px rgba(188, 165, 137, 0.2);
+    }
+
+    p {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 14px;
+        color: #8c8279;
+        font-weight: 300;
+    }
+
+    a {
+        text-decoration: none;
+        color: #a89175;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        color: #8a7359;
+    }
 </style>
 
 </head>
 <body>
 
 <div class="container">
-    <h2>Login</h2>
+    <h2>Welcome Back</h2>
 
     <form id="loginForm">
-        <input type="email" id="email" placeholder="Email" required>
+        <input type="email" id="email" placeholder="Email Address" required>
         <input type="password" id="password" placeholder="Password" required>
-        <button type="submit">Login</button>
+        <button type="submit">Sign In</button>
     </form>
 
     <p>Don't have an account? <a href="register.html">Register</a></p>
