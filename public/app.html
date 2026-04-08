@@ -66,6 +66,64 @@ button {
     margin-top: 10px;
     display: block;
 }
+.profile-card {
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+.profile-center {
+    margin: 20px 0;
+}
+
+.profile-img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 3px solid #ff6b81;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.upload-btn {
+    display: inline-block;
+    background: #ff6b81;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.input-group {
+    text-align: left;
+    margin: 15px 0;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: none;
+}
+
+.save-btn {
+    width: 100%;
+    background: #ff6b81;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.logout-btn {
+    width: 100%;
+    background: #6c757d;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
 </style>
 </head>
 
@@ -133,26 +191,37 @@ button {
 </div>
 
 <div id="settings" class="section">
-    <div class="card">
-        <h2>Settings & Profile</h2>
-        
-        <label>Display Name:</label>
-        <input type="text" id="profileName" placeholder="Enter your name">
-        
-        <label>Profile Picture:</label>
-        <div id="dpPreview" style="display: none; margin-bottom: 10px;">
-            <img id="profileImage" src="" alt="DP" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #ff6b81;">
+    <div class="card profile-card">
+
+        <h2>👤 Profile Settings</h2>
+
+        <!-- Profile Image -->
+        <div class="profile-center">
+            <img id="profileImage" src="https://via.placeholder.com/100" class="profile-img">
+            
+            <label class="upload-btn">
+                Change Photo
+                <input type="file" id="profilePic" accept="image/*" hidden>
+            </label>
         </div>
-        <input type="file" id="profilePic" accept="image/*">
-        
-        <label>Overall Details (Bio):</label>
-        <input type="text" id="profileDetails" placeholder="Tell us about yourself">
 
-        <button onclick="saveSettings()">Save Profile</button>
+        <!-- Name -->
+        <div class="input-group">
+            <label>Display Name</label>
+            <input type="text" id="profileName" placeholder="Enter your name">
+        </div>
 
-        <hr style="margin: 25px 0; border: 0; border-top: 1px solid #eee;">
-        
-        <button onclick="logout()" style="background: #6c757d;">Logout</button>
+        <!-- Bio -->
+        <div class="input-group">
+            <label>About You</label>
+            <textarea id="profileDetails" placeholder="Tell something about yourself"></textarea>
+        </div>
+
+        <!-- Buttons -->
+        <button class="save-btn" onclick="saveSettings()">Save Profile</button>
+
+        <button class="logout-btn" onclick="logout()">Logout</button>
+
     </div>
 </div>
 <script>
@@ -262,13 +331,12 @@ async function saveSettings() {
     formData.append("name", document.getElementById("profileName").value);
     formData.append("details", document.getElementById("profileDetails").value);
     
-    // Grab the actual file from the file input
+   // Grab the actual file from the file input
     const fileInput = document.getElementById("profilePic");
     if (fileInput.files.length > 0) {
-        // FIX APPLIED HERE: Added to grab the actual file object
-        formData.append("profilePic", fileInput.files);
+        // ADD HERE!
+      formData.append("profilePic", fileInput.files[0]);
     }
-
     try {
         const res = await fetch('/api/settings', {
             method: 'POST',
@@ -281,6 +349,7 @@ async function saveSettings() {
 
         const data = await res.json();
         alert(data.message || "Profile settings saved successfully!");
+        loadSettings();
 
     } catch (error) {
         console.error("Error saving settings:", error);
@@ -320,16 +389,30 @@ async function loadSettings() {
             document.getElementById("profileDetails").value = data.Overall_Details;
         }
         
-        // Show the profile picture if it exists
         if (data.Profile_Pic) {
-            document.getElementById("profileImage").src = data.Profile_Pic;
-            document.getElementById("dpPreview").style.display = "block";
-        }
+    profileImage.src = data.Profile_Pic;
+} else {
+    profileImage.src = "https://via.placeholder.com/100"; // default DP
+}
 
     } catch (error) {
         console.error("Error loading profile data:", error);
     }
 }
+//profle//
+document.getElementById("profilePic").addEventListener("change", function () {
+    const file = this.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            document.getElementById("profileImage").src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
+});
 </script>
 
 </body>

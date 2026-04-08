@@ -399,41 +399,24 @@ app.post('/api/settings', upload.single('profilePic'), (req, res) => {
 
 
 // ================= GET USER PROFILE DATA =================
-
 app.get('/api/settings/:userId', (req, res) => {
-
     const userId = req.params.userId;
-
     const sql = "SELECT * FROM user_settings WHERE UserID = ?";
-
-   
-
+    
     db.query(sql, [userId], (err, result) => {
-
         if (err) {
-
             console.error(err);
-
             return res.status(500).json({ message: "Database error." });
-
         }
-
-       
-
+        
         if (result.length > 0) {
-
-            res.json(result); // Send back the user's settings
-
+            // ADD HERE!
+           res.json(result[0]); // Send back the user's settings object
         } else {
-
             res.json({}); // Send empty object if no settings exist yet
-
         }
-
     });
-
 });
-
 
 
 // ================= REGISTER =================
