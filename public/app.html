@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CycleCare | Premium Cycle Tracking & Wellness</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<title>CycleCare | Cream Edition · Elegant Cycle Wellness</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
 * {
@@ -15,101 +15,105 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(145deg, #fef9fb 0%, #fdf3f6 100%);
-    color: #2c2a2e;
+    background: #fef9ef;  /* warm cream base */
+    color: #2c241e;
     min-height: 100vh;
 }
 
-/* custom scroll */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #ffe2e8; border-radius: 10px; }
-::-webkit-scrollbar-thumb { background: #ff9a8b; border-radius: 10px; }
+/* custom pastel scroll */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f5e6d9; border-radius: 20px; }
+::-webkit-scrollbar-thumb { background: #dbbfaa; border-radius: 20px; }
 
-/* Navbar Premium */
+/* Navbar — cream luxury */
 .navbar {
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(16px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.05);
-    padding: 14px 32px;
+    background: rgba(255, 252, 245, 0.96);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+    padding: 16px 32px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(255,123,140,0.2);
+    border-bottom: 1px solid #f0e0d0;
 }
 
 .nav-item {
     background: transparent;
-    padding: 10px 24px;
+    padding: 10px 28px;
     border-radius: 60px;
-    font-weight: 600;
-    color: #b1475c;
+    font-weight: 550;
+    color: #a77b5e;
     cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.2);
     font-size: 0.95rem;
     letter-spacing: -0.2px;
     backdrop-filter: blur(4px);
-    border: 1px solid rgba(255,123,140,0);
+    border: 1px solid rgba(200, 170, 140, 0.2);
+    font-family: 'Inter', sans-serif;
 }
 
 .nav-item i { margin-right: 8px; font-size: 1rem; }
 
 .nav-item:hover {
-    background: #ff7b8c;
-    color: white;
-    transform: translateY(-3px);
-    border-color: #ff9a8b;
-    box-shadow: 0 12px 20px -12px rgba(255,107,129,0.4);
+    background: #e7d5c0;
+    color: #5e3e2b;
+    transform: translateY(-4px);
+    border-color: #dbbc9b;
+    box-shadow: 0 14px 22px -14px rgba(120, 80, 50, 0.2);
 }
 
-/* Sections with fade-up */
+/* Sections with premium crossfade + scale animation */
 .section {
     display: none;
     padding: 32px 28px;
     max-width: 1400px;
     margin: 0 auto;
-    animation: fadeSlideUp 0.45s ease-out;
+    animation: creamyReveal 0.55s cubic-bezier(0.2, 0.9, 0.3, 1.1);
 }
 
-@keyframes fadeSlideUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes creamyReveal {
+    0% { opacity: 0; transform: translateY(22px) scale(0.98); filter: blur(2px);}
+    100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0);}
 }
 
 .active { display: block; }
 
-/* Cards premium */
+/* Cards — soft cream & depth */
 .card {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 252, 245, 0.92);
     backdrop-filter: blur(2px);
-    border-radius: 36px;
+    border-radius: 42px;
     padding: 28px 32px;
     margin-bottom: 28px;
-    box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
-    border: 1px solid rgba(255, 210, 218, 0.6);
-    transition: transform 0.2s ease, box-shadow 0.2s;
+    box-shadow: 0 20px 38px -14px rgba(70, 40, 20, 0.08);
+    border: 1px solid rgba(235, 215, 195, 0.8);
+    transition: all 0.3s ease;
 }
 
-.card:hover { box-shadow: 0 24px 40px -14px rgba(255,107,129,0.15); }
+.card:hover {
+    box-shadow: 0 28px 44px -18px rgba(100, 70, 40, 0.12);
+    border-color: #ecdccb;
+}
 
 .card h2 {
     font-family: 'Playfair Display', serif;
     font-size: 1.9rem;
-    font-weight: 600;
-    background: linear-gradient(135deg, #cc5a6e, #ff8a7a);
+    font-weight: 550;
+    background: linear-gradient(125deg, #b27d5c, #d9b48b);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     margin-bottom: 24px;
-    letter-spacing: -0.3px;
-    border-left: 5px solid #ff7b8c;
+    letter-spacing: -0.2px;
+    border-left: 5px solid #dbb28b;
     padding-left: 20px;
 }
 
-/* Form styles */
+/* Form elements — creamy & refined */
 .form-row {
     display: flex;
     flex-wrap: wrap;
@@ -127,17 +131,17 @@ body {
 
 .input-group label {
     font-weight: 600;
-    color: #a35c6b;
-    font-size: 0.75rem;
+    color: #9b7a60;
+    font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.6px;
+    letter-spacing: 0.8px;
 }
 
 input, select, textarea {
-    padding: 12px 18px;
-    border-radius: 24px;
-    border: 1.5px solid #ffdfe3;
-    background: #ffffff;
+    padding: 12px 20px;
+    border-radius: 32px;
+    border: 1.5px solid #f2e2d2;
+    background: #fffef8;
     font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
     transition: all 0.2s;
@@ -145,41 +149,42 @@ input, select, textarea {
 
 input:focus, select:focus, textarea:focus {
     outline: none;
-    border-color: #ff7b8c;
-    box-shadow: 0 0 0 3px rgba(255,123,140,0.2);
+    border-color: #dcb48b;
+    box-shadow: 0 0 0 3px rgba(220, 180, 139, 0.2);
 }
 
 button {
-    background: linear-gradient(105deg, #ff7b8c, #ff9a8b);
+    background: #e7cfb8;
     border: none;
-    padding: 12px 28px;
-    border-radius: 40px;
+    padding: 12px 30px;
+    border-radius: 44px;
     font-weight: 600;
-    color: white;
+    color: #5c3f2b;
     cursor: pointer;
     font-size: 0.85rem;
     transition: all 0.25s;
     font-family: 'Inter', sans-serif;
     letter-spacing: -0.2px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
 }
 
 button:hover {
-    transform: scale(0.96);
-    background: linear-gradient(105deg, #e86476, #f07b6e);
-    box-shadow: 0 12px 20px -12px #ff6b81;
+    background: #dbbc9b;
+    color: #2f241c;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px -12px #c9a87f;
 }
 
 .btn-outline {
     background: transparent;
-    border: 2px solid #ff7b8c;
-    color: #ff7b8c;
+    border: 2px solid #dbb28b;
+    color: #b27d5c;
     box-shadow: none;
 }
 
-.btn-outline:hover { background: #ff7b8c; color: white; transform: translateY(-2px); }
+.btn-outline:hover { background: #dbb28b; color: white; transform: translateY(-2px); }
 
-/* Table */
+/* Tables */
 .cycle-table {
     width: 100%;
     border-collapse: collapse;
@@ -188,17 +193,17 @@ button:hover {
 .cycle-table th {
     text-align: left;
     padding: 14px 8px;
-    color: #b15c6e;
+    color: #a77b5e;
     font-weight: 600;
-    border-bottom: 2px solid #ffe2e6;
+    border-bottom: 2px solid #f0e0d0;
 }
 
 .cycle-table td {
     padding: 12px 8px;
-    border-bottom: 1px solid #ffeff2;
+    border-bottom: 1px solid #f7ece2;
 }
 
-/* Dashboard tiles */
+/* Dashboard tiles — cream elegance */
 .dash-tiles {
     display: flex;
     flex-wrap: wrap;
@@ -207,26 +212,26 @@ button:hover {
 }
 
 .tile {
-    background: white;
+    background: #fffcf5;
     flex: 1;
     min-width: 170px;
-    border-radius: 32px;
+    border-radius: 36px;
     padding: 22px 18px;
     text-align: center;
     transition: all 0.2s;
-    border: 1px solid #ffe2e6;
+    border: 1px solid #f0e2d4;
 }
 
 .tile .number {
     font-size: 2.6rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #ff6b81, #ff8a7a);
+    background: linear-gradient(135deg, #bd8f6b, #e2bb96);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-/* ---------- PREMIUM SETTINGS MODULE (REDESIGN) ---------- */
+/* Settings – redesigned, cozy */
 .settings-container {
     display: flex;
     flex-wrap: wrap;
@@ -235,18 +240,18 @@ button:hover {
 }
 
 .profile-sidebar {
-    flex: 0 0 220px;
+    flex: 0 0 210px;
     text-align: center;
-    background: rgba(255,245,247,0.7);
-    border-radius: 48px;
-    padding: 24px 16px;
+    background: #fff8f0;
+    border-radius: 52px;
+    padding: 24px 12px;
     backdrop-filter: blur(4px);
 }
 
 .profile-photo-wrapper {
     position: relative;
-    width: 110px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
     margin: 0 auto 20px;
 }
 
@@ -255,96 +260,64 @@ button:hover {
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    border: 4px solid white;
-    box-shadow: 0 15px 25px -12px rgba(0,0,0,0.2);
+    border: 4px solid #f7ede2;
+    box-shadow: 0 12px 20px -12px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
 }
 
-.profile-photo-wrapper:hover img {
-    transform: scale(1.02);
-}
-
 .upload-label {
-    background: #ff7b8c;
-    color: white;
+    background: #e7cfb8;
+    color: #6a4d36;
     padding: 6px 14px;
-    border-radius: 30px;
+    border-radius: 40px;
     font-size: 0.7rem;
     font-weight: 600;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    margin-top: 8px;
-    transition: 0.2s;
 }
-
-.upload-label:hover { background: #e86476; }
 
 .profile-details {
     flex: 2;
-    background: white;
-    border-radius: 36px;
+    background: #fffcf7;
+    border-radius: 44px;
     padding: 28px 32px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.02);
 }
 
-.input-group-full {
-    margin-bottom: 24px;
-}
-
-.input-group-full label {
-    display: block;
-    font-weight: 600;
-    color: #a35c6b;
-    margin-bottom: 8px;
-    font-size: 0.8rem;
-}
-
-.input-group-full input, 
-.input-group-full textarea {
-    width: 100%;
-    padding: 14px 18px;
-}
-
-.button-group {
-    display: flex;
-    gap: 16px;
-    margin-top: 28px;
-    flex-wrap: wrap;
-}
-
-.logout-btn {
-    background: #e0cfd3;
-    color: #7a4f5a;
-    box-shadow: none;
-}
-
-.logout-btn:hover { background: #cbb6bc; color: white; transform: translateY(-2px); }
-
-/* Reminder alerts */
+/* alerts */
 .reminder-alert {
-    background: #fff2f5;
-    border-left: 5px solid #ff7b8c;
-    padding: 14px 20px;
-    border-radius: 24px;
+    background: #fff6ed;
+    border-left: 6px solid #e1bc96;
+    padding: 14px 22px;
+    border-radius: 28px;
     margin: 12px 0;
     transition: 0.2s;
 }
 
 .insight-card {
-    background: #fffafb;
-    border-radius: 28px;
-    padding: 20px;
-    transition: all 0.2s;
+    background: #fffaf3;
+    border-radius: 32px;
+    padding: 18px 22px;
 }
 
-/* Responsive */
+/* edit / delete inline buttons */
+.edit-btn, .delete-btn {
+    padding: 5px 14px;
+    font-size: 0.7rem;
+    border-radius: 40px;
+    border: none;
+    margin: 0 3px;
+}
+.edit-btn { background: #dbb894; color: #2f241c; }
+.delete-btn { background: #e3caba; color: #5a3e2b; }
+
+/* responsive */
 @media (max-width: 780px) {
     .settings-container { flex-direction: column; }
     .profile-sidebar { flex: auto; width: 100%; }
     .navbar { padding: 12px 16px; gap: 8px; }
-    .nav-item { padding: 6px 14px; font-size: 0.8rem; }
+    .nav-item { padding: 6px 16px; font-size: 0.8rem; }
 }
 </style>
 </head>
@@ -362,7 +335,7 @@ button:hover {
 <!-- DASHBOARD -->
 <div id="dashboard" class="section active">
     <div class="card">
-        <h2><i class="fas fa-leaf"></i> Health Dashboard</h2>
+        <h2><i class="fas fa-leaf"></i> Creamy Health Dashboard</h2>
         <div class="dash-tiles">
             <div class="tile"><div class="label">Total Cycles</div><div class="number" id="totalCycles">--</div></div>
             <div class="tile"><div class="label">Avg Cycle</div><div class="number" id="avgCycleLen">--</div><div>days</div></div>
@@ -370,9 +343,9 @@ button:hover {
             <div class="tile"><div class="label">Next Period</div><div class="number" id="nextPeriodEst">--</div></div>
         </div>
         <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-            <div class="insight-card" style="flex:1"><h3>💧 Most Common Flow</h3><div style="font-size:2rem; font-weight:800; color:#ff6b81;" id="commonFlow">-</div></div>
-            <div class="insight-card" style="flex:1"><h3>😌 Frequent Mood</h3><div style="font-size:2rem; font-weight:800; color:#ff6b81;" id="commonMood">-</div></div>
-            <div class="insight-card" style="flex:1"><h3>📋 Regularity</h3><div id="regularityStatus">⚖️ Normal</div></div>
+            <div class="insight-card" style="flex:1"><h3>💧 Most Common Flow</h3><div style="font-size:2rem; font-weight:800; color:#bd8f6b;" id="commonFlow">-</div></div>
+            <div class="insight-card" style="flex:1"><h3>😌 Frequent Mood</h3><div style="font-size:2rem; font-weight:800; color:#bd8f6b;" id="commonMood">-</div></div>
+            <div class="insight-card" style="flex:1"><h3>📋 Regularity</h3><div id="regularityStatus">⚖️ Balanced</div></div>
         </div>
     </div>
 </div>
@@ -380,45 +353,45 @@ button:hover {
 <!-- CYCLE ENTRY -->
 <div id="cycle" class="section">
     <div class="card">
-        <h2><i class="fas fa-pen-alt"></i> Menstrual Data Entry</h2>
+        <h2><i class="fas fa-feather-alt"></i> Cycle Journal</h2>
         <div class="form-row">
             <div class="input-group"><label>Start Date</label><input type="date" id="startDate"></div>
             <div class="input-group"><label>End Date</label><input type="date" id="endDate"></div>
             <div class="input-group"><label>Flow Level</label><select id="flow"><option>Light</option><option>Medium</option><option>Heavy</option></select></div>
-            <div class="input-group"><label>Mood</label><input type="text" id="mood" placeholder="e.g., Happy"></div>
-            <div class="input-group"><label>Symptoms</label><input type="text" id="symptoms" placeholder="cramps, headache"></div>
+            <div class="input-group"><label>Mood</label><input type="text" id="mood" placeholder="e.g., Serene"></div>
+            <div class="input-group"><label>Symptoms</label><input type="text" id="symptoms" placeholder="cramps, fatigue"></div>
             <div class="input-group"><label>Notes</label><input type="text" id="notes"></div>
         </div>
-        <button onclick="saveCycle()"><i class="fas fa-save"></i> Save New Cycle</button>
-        <div style="margin-top:20px; background:#fef0f2; padding:18px; border-radius:28px;">
-            <label>✏️ Edit Cycle:</label>
+        <button onclick="saveCycle()"><i class="fas fa-save"></i> Save Cycle</button>
+        <div style="margin-top:24px; background:#fff4ea; padding:18px; border-radius:32px;">
+            <label>✏️ Edit existing:</label>
             <select id="editCycleSelect" style="margin:0 12px; width:auto; display:inline-block;"></select>
             <button class="btn-outline" onclick="loadCycleForEdit()">Load</button>
-            <button style="background:#4c9f70;" onclick="updateCycle()">Update</button>
+            <button style="background:#c6a17e; color:white;" onclick="updateCycle()">Update</button>
         </div>
     </div>
-    <div class="card"><h2>📋 Cycle History</h2><div id="cycleHistoryList">Loading...</div></div>
+    <div class="card"><h2>📜 Cycle History</h2><div id="cycleHistoryList">Loading history...</div></div>
 </div>
 
 <!-- PREDICTION -->
 <div id="prediction" class="section">
     <div class="card"><h2><i class="fas fa-chart-line"></i> Cycle Prediction</h2>
-        <p><strong>Formula:</strong> Next Period = Last Period + Avg Cycle | Ovulation = Next Period - 14 days</p>
+        <p style="color:#9b7a60;"><strong>Formula:</strong> Next Period = Last Period + Avg Cycle | Ovulation = Next Period - 14 days</p>
         <div class="form-row">
             <div class="input-group"><label>Last Period Start</label><input type="date" id="lastPeriodDate"></div>
             <div class="input-group"><label>Avg Cycle Length</label><input type="number" id="cycleLengthInput" placeholder="28"></div>
             <button class="btn-outline" onclick="autoFillFromHistory()"><i class="fas fa-history"></i> Use History</button>
         </div>
-        <button onclick="calculatePrediction()">Predict Now</button>
-        <div id="predictionResultBox" style="margin-top:20px; display:none;" class="prediction-highlight"></div>
+        <button onclick="calculatePrediction()">✨ Predict Now</button>
+        <div id="predictionResultBox" style="margin-top:24px; display:none;"></div>
     </div>
 </div>
 
 <!-- REMINDERS -->
 <div id="reminder" class="section">
-    <div class="card"><h2><i class="fas fa-bell"></i> Smart Reminders</h2>
+    <div class="card"><h2><i class="fas fa-bell"></i> Gentle Reminders</h2>
         <div id="liveRemindersList"></div>
-        <h3>📅 Custom Reminder</h3>
+        <h3>📅 Set custom nudge</h3>
         <div class="form-row">
             <select id="reminderType"><option>Period Starting Soon</option><option>Ovulation Window</option><option>Cycle Data Entry</option><option>Custom</option></select>
             <input type="datetime-local" id="reminderDate">
@@ -430,10 +403,10 @@ button:hover {
 
 <!-- REPORTS -->
 <div id="report" class="section">
-    <div class="card"><h2><i class="fas fa-chart-pie"></i> Monthly Reports</h2>
+    <div class="card"><h2><i class="fas fa-chart-pie"></i> Monthly Insights</h2>
         <div class="form-row"><input type="month" id="reportMonth"><button onclick="generateMonthlyReport()">Generate Report</button></div>
         <div id="monthlyReportContent"></div>
-        <h3>Key Insights</h3>
+        <h3>Key Analytics</h3>
         <div id="keyInsights" style="display:flex; flex-wrap:wrap; gap:16px;">
             <div class="insight-card">📊 Avg Cycle: <strong id="reportAvgCycle">--</strong></div>
             <div class="insight-card">⚠️ Irregularity: <strong id="irregularStatus">--</strong></div>
@@ -443,30 +416,30 @@ button:hover {
     </div>
 </div>
 
-<!-- ========== REDESIGNED SETTINGS MODULE (premium, smaller photo, organized) ========= -->
+<!-- SETTINGS (creamy, smaller photo, organized) -->
 <div id="settings" class="section">
     <div class="card">
-        <h2><i class="fas fa-sliders-h"></i> Profile Settings</h2>
+        <h2><i class="fas fa-sliders-h"></i> Profile Preferences</h2>
         <div class="settings-container">
             <div class="profile-sidebar">
                 <div class="profile-photo-wrapper">
-                    <img id="profileImage" src="https://ui-avatars.com/api/?background=ff7b8c&color=fff&rounded=true&size=110&name=User" alt="Profile">
+                    <img id="profileImage" src="https://ui-avatars.com/api/?background=e7cfb8&color=6a4d36&rounded=true&size=100&name=Me" alt="profile">
                 </div>
                 <label class="upload-label"><i class="fas fa-camera"></i> Change Photo<input type="file" id="profilePic" accept="image/*" hidden></label>
-                <div style="margin-top: 16px; font-size:0.7rem; color:#b86f7e;">JPG or PNG</div>
+                <div style="margin-top: 12px; font-size:0.65rem; color:#b29273;">JPG/PNG</div>
             </div>
             <div class="profile-details">
                 <div class="input-group-full">
                     <label><i class="fas fa-user"></i> Display Name</label>
-                    <input type="text" id="profileName" placeholder="Your full name">
+                    <input type="text" id="profileName" placeholder="Your name">
                 </div>
                 <div class="input-group-full">
                     <label><i class="fas fa-info-circle"></i> About You</label>
-                    <textarea id="profileDetails" rows="3" placeholder="Wellness goals, preferences..."></textarea>
+                    <textarea id="profileDetails" rows="3" placeholder="Wellness notes, goals..."></textarea>
                 </div>
                 <div class="button-group">
                     <button onclick="saveSettings()"><i class="fas fa-check-circle"></i> Save Profile</button>
-                    <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                    <button class="logout-btn" onclick="logout()" style="background:#e0cebc; color:#6b4e38;"><i class="fas fa-sign-out-alt"></i> Logout</button>
                 </div>
             </div>
         </div>
@@ -474,8 +447,9 @@ button:hover {
 </div>
 
 <script>
-const userId = localStorage.getItem("userId") || "demo_user_123";
-if (!localStorage.getItem("userId")) localStorage.setItem("userId", "demo_user_123");
+// ---------- GLOBALS & API ----------
+const userId = localStorage.getItem("userId") || "cream_user_789";
+if (!localStorage.getItem("userId")) localStorage.setItem("userId", "cream_user_789");
 const API_BASE = '';
 
 async function apiCall(endpoint, method, body = null, isFormData = false) {
@@ -487,11 +461,17 @@ async function apiCall(endpoint, method, body = null, isFormData = false) {
     return await res.json();
 }
 
-// Dashboard
+// ========== DASHBOARD ==========
 async function refreshDashboard() {
     try {
         const cycles = await apiCall(`/api/cycles/user/${userId}`, 'GET');
-        if (!cycles.length) { document.getElementById("totalCycles").innerText = "0"; document.getElementById("avgCycleLen").innerText = "--"; return; }
+        if (!cycles.length) {
+            document.getElementById("totalCycles").innerText = "0"; document.getElementById("avgCycleLen").innerText = "--";
+            document.getElementById("lastCycleEnd").innerText = "—"; document.getElementById("nextPeriodEst").innerText = "—";
+            document.getElementById("commonFlow").innerText = "-"; document.getElementById("commonMood").innerText = "-";
+            document.getElementById("regularityStatus").innerHTML = "🌾 No data yet";
+            return;
+        }
         cycles.sort((a,b)=>new Date(b.Start_Date)-new Date(a.Start_Date));
         document.getElementById("totalCycles").innerText = cycles.length;
         let lengths = [];
@@ -521,14 +501,16 @@ async function refreshDashboard() {
             let cv = Math.sqrt(variance)/mean;
             if(cv>0.2) regStatus = "🟡 Variable";
             if(cv>0.35) regStatus = "🔴 Irregular";
-        } else regStatus = "⚖️ Add more cycles";
+        } else regStatus = "⚖️ Add 3+ cycles";
         document.getElementById("regularityStatus").innerHTML = regStatus;
-    } catch(e){}
+    } catch(e){ console.warn(e); }
 }
+
+// CYCLE CRUD
 async function loadCycleHistory() {
     try {
         const cycles = await apiCall(`/api/cycles/user/${userId}`, 'GET');
-        if(!cycles.length){ document.getElementById("cycleHistoryList").innerHTML="<p>No cycles</p>"; return; }
+        if(!cycles.length){ document.getElementById("cycleHistoryList").innerHTML="<p class='reminder-alert'>No cycles yet. Add your first.</p>"; return; }
         let html = `<table class="cycle-table"><thead><tr><th>Start</th><th>End</th><th>Flow</th><th>Mood</th><th>Symptoms</th><th>Actions</th></tr></thead><tbody>`;
         cycles.sort((a,b)=>new Date(b.Start_Date)-new Date(a.Start_Date));
         cycles.forEach(c=>{
@@ -540,27 +522,28 @@ async function loadCycleHistory() {
         let select = document.getElementById("editCycleSelect");
         select.innerHTML = '<option value="">Select cycle</option>';
         cycles.forEach(c=>{ let opt = document.createElement("option"); opt.value=c.CycleID; opt.textContent=`${c.Start_Date} - ${c.Flow_Level}`; select.appendChild(opt); });
-    } catch(e){ document.getElementById("cycleHistoryList").innerHTML="Error"; }
+    } catch(e){ document.getElementById("cycleHistoryList").innerHTML="Error loading"; }
 }
+
 async function saveCycle() {
     let startDate = document.getElementById("startDate").value;
     if(!startDate){ alert("Start date required"); return; }
     let payload = { userId, startDate, endDate: document.getElementById("endDate").value, flow: document.getElementById("flow").value, mood: document.getElementById("mood").value, symptoms: document.getElementById("symptoms").value, notes: document.getElementById("notes").value };
-    try{ await apiCall('/api/cycle', 'POST', payload); alert("Saved!"); clearCycleForm(); await loadCycleHistory(); await refreshDashboard(); await updateRemindersAndReports(); } catch(e){ alert("Save failed"); }
+    try{ await apiCall('/api/cycle', 'POST', payload); alert("Cycle saved ✨"); clearCycleForm(); await loadCycleHistory(); await refreshDashboard(); await updateRemindersAndReports(); } catch(e){ alert("Save failed. Check backend."); }
 }
-async function deleteCycle(id){ if(!confirm("Delete?")) return; try{ await apiCall(`/api/cycle/${id}`,'DELETE'); await loadCycleHistory(); await refreshDashboard(); await updateRemindersAndReports(); }catch(e){ alert("Error"); } }
+async function deleteCycle(id){ if(!confirm("Delete cycle?")) return; try{ await apiCall(`/api/cycle/${id}`,'DELETE'); await loadCycleHistory(); await refreshDashboard(); await updateRemindersAndReports(); }catch(e){ alert("Error"); } }
 let currentEditId=null;
-async function prepareEditCycle(id){ try{ const cycles = await apiCall(`/api/cycles/user/${userId}`,'GET'); const cycle = cycles.find(c=>c.CycleID==id); if(cycle){ document.getElementById("startDate").value=cycle.Start_Date; document.getElementById("endDate").value=cycle.End_Date||''; document.getElementById("flow").value=cycle.Flow_Level; document.getElementById("mood").value=cycle.Mood||''; document.getElementById("symptoms").value=cycle.Symptoms||''; document.getElementById("notes").value=cycle.Notes||''; currentEditId=id; alert("Loaded for edit"); } }catch(e){} }
+async function prepareEditCycle(id){ try{ const cycles = await apiCall(`/api/cycles/user/${userId}`,'GET'); const cycle = cycles.find(c=>c.CycleID==id); if(cycle){ document.getElementById("startDate").value=cycle.Start_Date; document.getElementById("endDate").value=cycle.End_Date||''; document.getElementById("flow").value=cycle.Flow_Level; document.getElementById("mood").value=cycle.Mood||''; document.getElementById("symptoms").value=cycle.Symptoms||''; document.getElementById("notes").value=cycle.Notes||''; currentEditId=id; alert("Loaded for edit"); } } catch(e){} }
 async function loadCycleForEdit(){ let id=document.getElementById("editCycleSelect").value; if(!id) return; await prepareEditCycle(parseInt(id)); }
 async function updateCycle(){ if(!currentEditId){ let val=document.getElementById("editCycleSelect").value; if(!val) return; currentEditId=parseInt(val); } let data={ startDate:document.getElementById("startDate").value, endDate:document.getElementById("endDate").value, flow:document.getElementById("flow").value, mood:document.getElementById("mood").value, symptoms:document.getElementById("symptoms").value, notes:document.getElementById("notes").value }; try{ await apiCall(`/api/cycle/${currentEditId}`,'PUT',data); alert("Updated!"); clearCycleForm(); currentEditId=null; await loadCycleHistory(); await refreshDashboard(); await updateRemindersAndReports(); }catch(e){ alert("Update failed"); } }
 function clearCycleForm(){ document.getElementById("startDate").value=""; document.getElementById("endDate").value=""; document.getElementById("mood").value=""; document.getElementById("symptoms").value=""; document.getElementById("notes").value=""; document.getElementById("flow").value="Light"; }
 
-// Reminders
+// REMINDERS ENGINE
 async function updateRemindersAndReports() { await generateSmartReminders(); await updateReportInsights(); }
 async function generateSmartReminders() {
     try {
         const cycles = await apiCall(`/api/cycles/user/${userId}`, 'GET');
-        if(!cycles.length){ document.getElementById("liveRemindersList").innerHTML = "<div class='reminder-alert'>📭 No cycle data yet.</div>"; return; }
+        if(!cycles.length){ document.getElementById("liveRemindersList").innerHTML = "<div class='reminder-alert'>🌾 Add cycle data to see smart alerts.</div>"; return; }
         cycles.sort((a,b)=>new Date(b.Start_Date)-new Date(a.Start_Date));
         let lastCycle = cycles[0];
         let avgLen = await getAverageCycleLength(cycles);
@@ -570,42 +553,44 @@ async function generateSmartReminders() {
             nextPeriod.setDate(nextPeriod.getDate() + avgLen);
             let today = new Date(); today.setHours(0,0,0,0);
             let daysDiff = Math.ceil((nextPeriod - today)/(1000*3600*24));
-            if(daysDiff <= 3 && daysDiff >= 0) remindersHtml += `<div class="reminder-alert">🩸 Period starting soon! in ${daysDiff} days.</div>`;
+            if(daysDiff <= 3 && daysDiff >= 0) remindersHtml += `<div class="reminder-alert">🌸 Period approaching! in ${daysDiff} days.</div>`;
             let ovulation = new Date(nextPeriod); ovulation.setDate(nextPeriod.getDate() - 14);
             let fertileStart = new Date(ovulation); fertileStart.setDate(ovulation.getDate()-5);
             let fertileEnd = new Date(ovulation); fertileEnd.setDate(ovulation.getDate()+1);
-            if(today >= fertileStart && today <= fertileEnd) remindersHtml += `<div class="reminder-alert">🥚 Ovulation window active!</div>`;
+            if(today >= fertileStart && today <= fertileEnd) remindersHtml += `<div class="reminder-alert">🥚 Fertile window active (ovulation).</div>`;
         }
         let daysSinceLast = Math.ceil((new Date() - new Date(lastCycle.Start_Date))/(1000*3600*24));
-        if(daysSinceLast > 30) remindersHtml += `<div class="reminder-alert">📝 Cycle data reminder: ${daysSinceLast} days since last cycle.</div>`;
-        if(!remindersHtml) remindersHtml = "<div class='reminder-alert'>✅ All good! You're on track.</div>";
+        if(daysSinceLast > 30) remindersHtml += `<div class="reminder-alert">📝 Reminder: update your cycle entry.</div>`;
+        if(!remindersHtml) remindersHtml = "<div class='reminder-alert'>✅ Everything aligned. Stay well.</div>";
         document.getElementById("liveRemindersList").innerHTML = remindersHtml;
         let saved = JSON.parse(localStorage.getItem("customReminders") || "[]");
-        let savedHtml = "<h3>📌 Custom Reminders</h3>";
-        saved.forEach((r,idx)=>{ savedHtml += `<div class='reminder-alert'>🔔 ${r.type} on ${new Date(r.date).toLocaleString()} <button style="background:#dc3545;" onclick="deleteReminder(${idx})">X</button></div>`; });
+        let savedHtml = "<h3>📌 Saved reminders</h3>";
+        saved.forEach((r,idx)=>{ savedHtml += `<div class='reminder-alert'>🔔 ${r.type} on ${new Date(r.date).toLocaleString()} <button style="background:#dcb48b;" onclick="deleteReminder(${idx})">X</button></div>`; });
         document.getElementById("savedRemindersList").innerHTML = savedHtml;
     } catch(e){}
 }
 async function getAverageCycleLength(cycles){
     if(cycles.length<2) return null;
-    let len=[];
-    for(let i=0;i<cycles.length-1;i++){ let diff=(new Date(cycles[i].Start_Date)-new Date(cycles[i+1].Start_Date))/(1000*3600*24); if(diff>0 && diff<60) len.push(diff); }
-    return len.length ? Math.round(len.reduce((a,b)=>a+b,0)/len.length) : null;
+    let lens=[];
+    for(let i=0;i<cycles.length-1;i++){ let diff=(new Date(cycles[i].Start_Date)-new Date(cycles[i+1].Start_Date))/(1000*3600*24); if(diff>0 && diff<60) lens.push(diff); }
+    return lens.length ? Math.round(lens.reduce((a,b)=>a+b,0)/lens.length) : null;
 }
-function setReminder(){ let type=document.getElementById("reminderType").value, date=document.getElementById("reminderDate").value; if(!date){ alert("Select date"); return; } let rem=JSON.parse(localStorage.getItem("customReminders")||"[]"); rem.push({type,date}); localStorage.setItem("customReminders",JSON.stringify(rem)); alert("Reminder set"); generateSmartReminders(); }
+function setReminder(){ let type=document.getElementById("reminderType").value, date=document.getElementById("reminderDate").value; if(!date){ alert("Pick date & time"); return; } let rem=JSON.parse(localStorage.getItem("customReminders")||"[]"); rem.push({type,date}); localStorage.setItem("customReminders",JSON.stringify(rem)); alert("Reminder set!"); generateSmartReminders(); }
 function deleteReminder(idx){ let rem=JSON.parse(localStorage.getItem("customReminders")||"[]"); rem.splice(idx,1); localStorage.setItem("customReminders",JSON.stringify(rem)); generateSmartReminders(); }
 
-// Reports
-async function generateMonthlyReport(){ let monthVal=document.getElementById("reportMonth").value; if(!monthVal) return; let [year,month]=monthVal.split("-"); let cycles=await apiCall(`/api/cycles/user/${userId}`,'GET'); let filtered=cycles.filter(c=>{ let d=new Date(c.Start_Date); return d.getFullYear()==year && d.getMonth()+1==parseInt(month); }); if(!filtered.length){ document.getElementById("monthlyReportContent").innerHTML="<div>No entries</div>"; return; } document.getElementById("monthlyReportContent").innerHTML=`<div class="insight-card"><strong>${month}/${year}</strong> | ${filtered.length} cycles recorded</div>`; }
-async function updateReportInsights(cyclesData=null){ let cycles=cyclesData || await apiCall(`/api/cycles/user/${userId}`,'GET'); if(!cycles.length) return; let avg=await getAverageCycleLength(cycles); document.getElementById("reportAvgCycle").innerText=avg?avg+" days":"--"; let syms=cycles.map(c=>c.Symptoms).filter(s=>s).join(",").split(",").map(s=>s.trim()); let topSym=syms.reduce((a,b,i,arr)=>arr.filter(v=>v===b).length> (a.count||0)?{val:b,count:arr.filter(v=>v===b).length}:a,{val:"—",count:0}).val; document.getElementById("symptomPatterns").innerText=topSym||"—"; let combos=cycles.map(c=>`${c.Flow_Level}+${c.Mood||'?'}`); let comboCount={}; combos.forEach(c=>comboCount[c]=(comboCount[c]||0)+1); let topCombo=Object.keys(comboCount).length?Object.keys(comboCount).reduce((a,b)=>comboCount[a]>comboCount[b]?a:b,"—"):"—"; document.getElementById("commonCombo").innerHTML=topCombo; }
-async function calculatePrediction(){ let last=document.getElementById("lastPeriodDate").value; let len=parseInt(document.getElementById("cycleLengthInput").value); if(!last) return; if(isNaN(len)||len<18) len=28; let next=new Date(last); next.setDate(next.getDate()+len); let ov=new Date(next); ov.setDate(next.getDate()-14); document.getElementById("predictionResultBox").innerHTML=`<div style="display:flex; gap:12px;"><div class="insight-card">Next Period: ${next.toDateString()}</div><div class="insight-card">Ovulation: ${ov.toDateString()}</div></div>`; document.getElementById("predictionResultBox").style.display="block"; }
-async function autoFillFromHistory(){ let cycles=await apiCall(`/api/cycles/user/${userId}`,'GET'); if(cycles.length<2){ alert("Need 2+ cycles"); return; } let avg=await getAverageCycleLength(cycles); if(avg) document.getElementById("cycleLengthInput").value=avg; cycles.sort((a,b)=>new Date(b.Start_Date)-new Date(a.Start_Date)); document.getElementById("lastPeriodDate").value=cycles[0].Start_Date; alert("Auto-filled"); }
+// REPORTS & INSIGHTS
+async function generateMonthlyReport(){ let monthVal=document.getElementById("reportMonth").value; if(!monthVal) return; let [year,month]=monthVal.split("-"); let cycles=await apiCall(`/api/cycles/user/${userId}`,'GET'); let filtered=cycles.filter(c=>{ let d=new Date(c.Start_Date); return d.getFullYear()==year && d.getMonth()+1==parseInt(month); }); if(!filtered.length){ document.getElementById("monthlyReportContent").innerHTML="<div class='reminder-alert'>No data this month</div>"; return; } document.getElementById("monthlyReportContent").innerHTML=`<div class="insight-card"><strong>${month}/${year}</strong> · ${filtered.length} cycles recorded · Flow trend: ${filtered.map(f=>f.Flow_Level).join(', ')}</div>`; }
+async function updateReportInsights(cyclesData=null){ let cycles=cyclesData || await apiCall(`/api/cycles/user/${userId}`,'GET'); if(!cycles.length) return; let avg=await getAverageCycleLength(cycles); document.getElementById("reportAvgCycle").innerText=avg?avg+" days":"--"; let syms=cycles.map(c=>c.Symptoms).filter(s=>s).join(",").split(",").map(s=>s.trim()); let freq={}; syms.forEach(s=>freq[s]=(freq[s]||0)+1); let topSym=Object.keys(freq).length?Object.keys(freq).reduce((a,b)=>freq[a]>freq[b]?a:b,"—"):"—"; document.getElementById("symptomPatterns").innerText=topSym; let combos=cycles.map(c=>`${c.Flow_Level}+${c.Mood||'?'}`); let comboCount={}; combos.forEach(c=>comboCount[c]=(comboCount[c]||0)+1); let topCombo=Object.keys(comboCount).length?Object.keys(comboCount).reduce((a,b)=>comboCount[a]>comboCount[b]?a:b,"—"):"—"; document.getElementById("commonCombo").innerHTML=topCombo; }
+async function calculatePrediction(){ let last=document.getElementById("lastPeriodDate").value; let len=parseInt(document.getElementById("cycleLengthInput").value); if(!last) return; if(isNaN(len)||len<18) len=28; let next=new Date(last); next.setDate(next.getDate()+len); let ov=new Date(next); ov.setDate(next.getDate()-14); document.getElementById("predictionResultBox").innerHTML=`<div style="display:flex; gap:14px; flex-wrap:wrap;"><div class="insight-card">🩸 Next Period: ${next.toDateString()}</div><div class="insight-card">🥚 Ovulation: ${ov.toDateString()}</div></div>`; document.getElementById("predictionResultBox").style.display="block"; }
+async function autoFillFromHistory(){ let cycles=await apiCall(`/api/cycles/user/${userId}`,'GET'); if(cycles.length<2){ alert("Need 2+ cycles"); return; } let avg=await getAverageCycleLength(cycles); if(avg) document.getElementById("cycleLengthInput").value=avg; cycles.sort((a,b)=>new Date(b.Start_Date)-new Date(a.Start_Date)); document.getElementById("lastPeriodDate").value=cycles[0].Start_Date; alert("Auto-filled with history"); }
+
+// SETTINGS & PROFILE
 async function saveSettings(){ let form=new FormData(); form.append("userId",userId); form.append("name",document.getElementById("profileName").value); form.append("details",document.getElementById("profileDetails").value); let file=document.getElementById("profilePic").files[0]; if(file) form.append("profilePic",file); try{ await apiCall('/api/settings','POST',form,true); alert("Profile saved"); loadSettings(); }catch(e){ alert("Saved locally"); } }
 async function loadSettings(){ try{ let data=await apiCall(`/api/settings/${userId}`,'GET'); if(data.Name) document.getElementById("profileName").value=data.Name; if(data.Overall_Details) document.getElementById("profileDetails").value=data.Overall_Details; if(data.Profile_Pic) document.getElementById("profileImage").src=data.Profile_Pic; }catch(e){} }
 function logout(){ localStorage.removeItem("userId"); window.location.href="/"; }
 function showSection(id){ document.querySelectorAll('.section').forEach(s=>s.classList.remove('active')); document.getElementById(id).classList.add('active'); if(id==='dashboard') refreshDashboard(); if(id==='cycle') loadCycleHistory(); if(id==='reminder') generateSmartReminders(); if(id==='report') updateReportInsights(); }
 document.getElementById("profilePic")?.addEventListener("change",function(e){ if(e.target.files[0]){ const reader=new FileReader(); reader.onload=ev=>document.getElementById("profileImage").src=ev.target.result; reader.readAsDataURL(e.target.files[0]); } });
-document.addEventListener("DOMContentLoaded",()=>{ if(!localStorage.getItem("userId")) localStorage.setItem("userId","demo_user_123"); showSection('dashboard'); loadSettings(); refreshDashboard(); loadCycleHistory(); updateRemindersAndReports(); });
+document.addEventListener("DOMContentLoaded",()=>{ if(!localStorage.getItem("userId")) localStorage.setItem("userId","cream_user_789"); showSection('dashboard'); loadSettings(); refreshDashboard(); loadCycleHistory(); updateRemindersAndReports(); });
 </script>
 </body>
 </html>
